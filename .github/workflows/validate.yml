@@ -1,0 +1,43 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.13
+
+      - name: Install dependencies
+        run: uv sync --all-groups
+
+      - name: Run ruff
+        run: uv run ruff check .
+
+      - name: Run pytest
+        run: uv run pytest
+
+      - name: Validate JSON files
+        run: |
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path(".").rglob("*.json")):
+              if any(part.startswith(".") for part in path.parts):
+                  continue
+              with path.open(encoding="utf-8") as handle:
+                  json.load(handle)
+              print(path)
+          PY
+
