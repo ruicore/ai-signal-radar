@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-06-15",
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "backend-architecture",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Codex-class agents need persistent, customer-controlled cloud workspaces",
+      "summary": "OpenAI's planned Ona acquisition is treated as a signal that high-value Codex work is moving from short local sessions toward long-running, secure, auditable execution environments with scoped credentials, activity logs, and review workflows.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "coding-agents",
+        "llm-infrastructure"
+      ],
+      "evidence": [
+        "https://openai.com/index/openai-to-acquire-ona/"
+      ]
+    },
+    {
+      "title": "Hosted coding agents are becoming isolated runtime infrastructure",
+      "summary": "AWS AgentCore frames coding agents as production workloads that need isolated microVMs, persistent workspaces, deterministic command execution, identity, MCP gateway access, and observability rather than laptop-bound shells.",
+      "themes": [
+        "agent-runtime",
+        "backend-architecture",
+        "coding-agents",
+        "llm-infrastructure",
+        "observability"
+      ],
+      "evidence": [
+        "https://aws.amazon.com/blogs/machine-learning/its-safe-to-close-your-laptop-now-hosting-coding-agents-on-amazon-bedrock-agentcore/"
+      ]
+    },
+    {
+      "title": "Agentic coding workflows are entering CI/CD control planes",
+      "summary": "GitHub Agentic Workflows compiles natural-language task specifications into GitHub Actions, pulling issue triage, CI analysis, documentation updates, and repository maintenance into existing runner, policy, token, and sandbox systems.",
+      "themes": [
+        "ai-security",
+        "backend-architecture",
+        "coding-agents"
+      ],
+      "evidence": [
+        "https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview"
+      ]
+    },
+    {
+      "title": "Agent infrastructure evaluation is shifting toward full task workloads",
+      "summary": "NVIDIA AgentPerf is captured as a signal that agent infrastructure should be evaluated on coding trajectories, tool calls, command execution, iteration, concurrency, cost, and energy rather than single-call tokens-per-second measurements.",
+      "themes": [
+        "coding-agents",
+        "evaluation",
+        "llm-infrastructure"
+      ],
+      "evidence": [
+        "https://blogs.nvidia.com/blog/nvidia-blackwell-agentperf-artificial-analysis/"
+      ]
+    },
+    {
+      "title": "Managed agents need scheduling, secret boundaries, and connector observability",
+      "summary": "Anthropic's scheduled managed agents, vault-backed environment variables, and connector observability dashboard show hosted agents becoming operational backend workers with identity, secret injection, tool metrics, latency tracking, and health monitoring.",
+      "themes": [
+        "agent-runtime",
+        "ai-platforms",
+        "ai-security",
+        "observability"
+      ],
+      "evidence": [
+        "https://claude.com/blog/whats-new-in-claude-managed-agents"
+      ]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Remote Workspace Contract",
+      "summary": "Design a minimal execution-substrate contract for coding agents with workspace lifecycle, deterministic command execution, credential scope, and audit events before building a full remote runtime.",
+      "themes": [
+        "agent-runtime",
+        "backend-architecture",
+        "coding-agents",
+        "llm-infrastructure"
+      ]
+    }
+  ],
+  "markdown_path": "radars/2026/2026-06-15.md"
+}

@@ -1,1 +1,58 @@
-{}
+{
+  "agent-runtime": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "ai-platforms": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "ai-security": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "backend-architecture": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "coding-agents": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "evaluation": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "llm-infrastructure": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ],
+  "observability": [
+    {
+      "date": "2026-06-15",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/2026/2026-06-15.md"
+    }
+  ]
+}
