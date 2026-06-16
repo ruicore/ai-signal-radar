@@ -9,8 +9,6 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = REPO_ROOT / "data"
-INDEX_ROOT = REPO_ROOT / "indexes"
-THEMES_ROOT = REPO_ROOT / "themes"
 
 
 def load_records() -> list[dict[str, Any]]:
@@ -20,9 +18,13 @@ def load_records() -> list[dict[str, Any]]:
     return records
 
 
-def write_json(path: Path, payload: object) -> None:
+def render_json(payload: object) -> str:
+    return json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
+
+
+def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_text(content, encoding="utf-8")
 
 
 def build_weekly_index(records: list[dict[str, Any]]) -> list[dict[str, object]]:
@@ -52,7 +54,7 @@ def build_theme_index(records: list[dict[str, Any]]) -> dict[str, list[dict[str,
     return dict(sorted(themes.items()))
 
 
-def write_theme_readme(theme_index: dict[str, list[dict[str, str]]]) -> None:
+def render_theme_readme(theme_index: dict[str, list[dict[str, str]]]) -> str:
     lines = ["# Themes", ""]
     if not theme_index:
         lines.append("No reviewed radar themes have been indexed yet.")
@@ -61,8 +63,7 @@ def write_theme_readme(theme_index: dict[str, list[dict[str, str]]]) -> None:
         for entry in entries:
             lines.append(f"- {entry['date']}: [{entry['title']}](../{entry['markdown_path']})")
         lines.append("")
-    THEMES_ROOT.mkdir(parents=True, exist_ok=True)
-    (THEMES_ROOT / "README.md").write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def build_summary(records: list[dict[str, Any]]) -> dict[str, object]:
@@ -82,16 +83,22 @@ def build_summary(records: list[dict[str, Any]]) -> dict[str, object]:
     }
 
 
+def build_index_outputs(records: list[dict[str, Any]]) -> dict[Path, str]:
+    theme_index = build_theme_index(records)
+    return {
+        Path("indexes/weekly_radars.json"): render_json(build_weekly_index(records)),
+        Path("indexes/themes.json"): render_json(theme_index),
+        Path("indexes/summary.json"): render_json(build_summary(records)),
+        Path("themes/README.md"): render_theme_readme(theme_index),
+    }
+
+
 def main() -> int:
     records = load_records()
-    theme_index = build_theme_index(records)
-    write_json(INDEX_ROOT / "weekly_radars.json", build_weekly_index(records))
-    write_json(INDEX_ROOT / "themes.json", theme_index)
-    write_json(INDEX_ROOT / "summary.json", build_summary(records))
-    write_theme_readme(theme_index)
+    for relative_path, content in build_index_outputs(records).items():
+        write_text(REPO_ROOT / relative_path, content)
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
