@@ -1,4 +1,0 @@
-interface:
-  display_name: "Radar Analysis"
-  short_description: "Analyze AI signal radar history."
-  default_prompt: "Analyze this radar repository and produce a monthly, quarterly, or idea-mining report from existing reviewed data."
