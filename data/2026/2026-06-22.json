@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-06-22",
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "backend-architecture",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Agent capability discovery is becoming a runtime control-plane concern",
+      "summary": "Microsoft Agentic Resource Discovery and GitHub Copilot Agent Finder are treated as a signal that agents need governed runtime discovery for MCP servers, skills, agents, tools, registries, invocation boundaries, and policy metadata instead of relying only on static tool configuration.",
+      "themes": [
+        "agent-runtime",
+        "ai-platforms",
+        "coding-agents",
+        "llm-infrastructure"
+      ],
+      "evidence": [
+        "https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/"
+      ]
+    },
+    {
+      "title": "Durable execution, sandboxing, and filesystem state are becoming agent runtime primitives",
+      "summary": "Cloudflare's Agents SDK and Flue integration frame production agents as recoverable distributed systems with Durable Objects, durable streams, dynamic code execution, durable virtual filesystems, workflow steps, and credential-safe bindings rather than one-shot request handlers.",
+      "themes": [
+        "agent-runtime",
+        "ai-platforms",
+        "backend-architecture",
+        "llm-infrastructure",
+        "observability"
+      ],
+      "evidence": [
+        "https://blog.cloudflare.com/agents-platform-flue-sdk/"
+      ]
+    },
+    {
+      "title": "Agent evaluation is moving toward production trajectory replay",
+      "summary": "OpenAI Deployment Simulation is captured as a signal that model and agent releases need historical conversation and coding-trajectory replay, tool-response simulation, environment realism checks, and comparison against likely deployment behavior rather than only static benchmark scores.",
+      "themes": [
+        "coding-agents",
+        "evaluation",
+        "llm-infrastructure"
+      ],
+      "evidence": [
+        "https://openai.com/index/deployment-simulation/"
+      ]
+    },
+    {
+      "title": "Agent security is shifting from static permissions to monitored reasoning, plans, and actions",
+      "summary": "Google DeepMind's AI Control Roadmap treats internal AI agents as possible insider threats and emphasizes defense-in-depth with trusted supervisors, action blocking, protocol escalation, and metrics for coverage, recall, and response time over coding-agent tasks.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "coding-agents",
+        "observability"
+      ],
+      "evidence": [
+        "https://deepmind.google/blog/securing-the-future-of-ai-agents/"
+      ]
+    },
+    {
+      "title": "Security agents are being organized as multi-stage, recoverable harnesses",
+      "summary": "Cloudflare's vulnerability discovery harness is treated as a strong systems signal because it separates recon, hunt, validation, reporting, independent re-verification, persisted run state, context control, model routing, retry, resume, and finding ingestion instead of depending on a single security-review prompt.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "backend-architecture",
+        "evaluation",
+        "observability"
+      ],
+      "evidence": [
+        "https://blog.cloudflare.com/build-your-own-vulnerability-harness/"
+      ]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Agent Trajectory Ledger",
+      "summary": "Build a small ledger that records each agent step with capability source, authority scope, risk level, checkpoint state, tool response, status, and replay-candidate markers so agent workflows gain minimal observability, recovery, supervision, and evaluation hooks.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "backend-architecture",
+        "coding-agents",
+        "evaluation",
+        "observability"
+      ]
+    }
+  ],
+  "markdown_path": "radars/2026/2026-06-22.md"
+}
