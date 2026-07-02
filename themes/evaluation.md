@@ -7,6 +7,8 @@ Evaluation methods for AI systems, especially task-level, workload-level, and op
 ## Related Reports
 
 - 2026-06-15: [AI Systems Engineering 技术雷达（高信号版）](../radars/2026/2026-06-15.md)
+- 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../radars/2026/2026-06-29.md)
 
 ## Notable Recurring Signals
 
+- Agent evaluation is increasingly tied to task-level outcomes, validation quality, tool-surface cost, human correction, and merge or remediation impact rather than isolated model response quality.
