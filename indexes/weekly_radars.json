@@ -32,5 +32,21 @@
     ],
     "markdown_path": "radars/2026/2026-06-29.md",
     "data_path": "data/2026/2026-06-29.json"
+  },
+  {
+    "date": "2026-07-06",
+    "title": "AI Systems Engineering 技术雷达（高信号版）",
+    "themes": [
+      "agent-runtime",
+      "ai-platforms",
+      "ai-security",
+      "backend-architecture",
+      "coding-agents",
+      "evaluation",
+      "llm-infrastructure",
+      "observability"
+    ],
+    "markdown_path": "radars/2026/2026-07-06.md",
+    "data_path": "data/2026/2026-07-06.json"
   }
 ]
