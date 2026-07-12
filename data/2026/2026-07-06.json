@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-07-06",
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "backend-architecture",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Agent skills are becoming versioned, evaluated, optimizable artifacts",
+      "summary": "Microsoft Research SkillOpt treats skill files as trainable parameters and uses bounded edits, validation gates, edit budgets, and rejected-edit feedback across Codex and Claude Code harnesses.",
+      "themes": ["coding-agents", "evaluation", "agent-runtime"],
+      "evidence": ["Microsoft Research — SkillOpt: Agent skills as trainable parameters"]
+    },
+    {
+      "title": "Coding agents are acquiring an enterprise control plane",
+      "summary": "GitHub's session credit limits, session telemetry, GITHUB_TOKEN identity, cost centers, and managed settings show that agent runs need budgets, actor identity, tool traces, cost attribution, and policy distribution.",
+      "themes": ["ai-platforms", "observability", "ai-security", "coding-agents"],
+      "evidence": ["GitHub Changelog — Copilot session limits / agent session data / Actions GITHUB_TOKEN / cost centers / managed settings"]
+    },
+    {
+      "title": "Production agent workflows need a deterministic spine around agentic reasoning",
+      "summary": "AWS's healthcare claims pipeline uses explicit extraction, validation, transformation, notification, and a deterministic supervisor around an agentic validation node rather than delegating all workflow ordering to the agent.",
+      "themes": ["backend-architecture", "agent-runtime", "llm-infrastructure"],
+      "evidence": ["AWS Machine Learning Blog — Build an agentic AI healthcare claims pipeline with Amazon Bedrock AgentCore and Amazon Bedrock Data Automation"]
+    },
+    {
+      "title": "Agent workbenches are making provenance and reproducibility first-class",
+      "summary": "Anthropic Claude Science combines coordinating and specialist agents, reviewer agents, tools, packages, compute boundaries, and auditable artifacts containing the execution chain rather than only a final answer.",
+      "themes": ["agent-runtime", "observability", "evaluation", "llm-infrastructure"],
+      "evidence": ["Anthropic — Claude Science"]
+    },
+    {
+      "title": "Long-term memory is shifting from context stuffing to abstraction-guided retrieval",
+      "summary": "Microsoft Research Memora separates rich memory storage from primary abstractions, cue anchors, and policy-guided retrieval so long-horizon agents inject task-relevant context with lower noise and cost.",
+      "themes": ["agent-runtime", "llm-infrastructure", "evaluation"],
+      "evidence": ["Microsoft Research — Memora: A memory system for long-horizon language agents"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Skill Optimization Harness",
+      "summary": "Create versioned agent skills, frozen evaluation cases, bounded candidate edits, validation gates, and accepted/rejected JSONL logs; start with 5–10 real coding-agent tasks before automating optimization.",
+      "themes": ["coding-agents", "evaluation", "agent-runtime", "observability"]
+    }
+  ],
+  "markdown_path": "radars/2026/2026-07-06.md"
+}

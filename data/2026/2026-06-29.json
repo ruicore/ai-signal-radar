@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-06-29",
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "backend-architecture",
+    "coding-agents",
+    "computer-use",
+    "evaluation",
+    "llm-infrastructure",
+    "multi-tenancy",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Agent SaaS needs tenant context propagated through the full runtime graph",
+      "summary": "AWS AgentCore's pool-model multi-tenancy architecture is captured as a production agent signal: tenant boundaries must travel through API gateway limits, runtime isolation, memory namespaces, scoped credentials, retrieval filters, OpenTelemetry baggage, and cost attribution rather than living only as an application-layer tenant_id filter.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "backend-architecture",
+        "llm-infrastructure",
+        "multi-tenancy",
+        "observability"
+      ],
+      "evidence": [
+        "AWS Machine Learning Blog — Shared infrastructure, isolated tenants: Pool model multi-tenancy with Amazon Bedrock AgentCore"
+      ]
+    },
+    {
+      "title": "Security agents are moving from vulnerability discovery to validated remediation pipelines",
+      "summary": "OpenAI's Daybreak, Codex Security, and Patch the Planet work is treated as a signal that useful security agents need reachability evidence, validation, severity assessment, targeted patches, tests, human review, and disclosure workflow support rather than raw alert generation.",
+      "themes": [
+        "ai-security",
+        "coding-agents",
+        "evaluation"
+      ],
+      "evidence": [
+        "OpenAI — Daybreak: Tools for securing every organization in the world",
+        "OpenAI — Patch the Planet"
+      ]
+    },
+    {
+      "title": "Copilot is becoming a coding-agent control plane",
+      "summary": "GitHub's BYOK support, Copilot CLI GA, code review tool and cost updates, enterprise plugin marketplace restrictions, and AI adoption metrics collectively point toward a control plane for model routing, terminal-native agents, tool governance, plugin trust, evaluation, cost efficiency, and adoption telemetry.",
+      "themes": [
+        "ai-platforms",
+        "ai-security",
+        "backend-architecture",
+        "coding-agents",
+        "evaluation",
+        "observability"
+      ],
+      "evidence": [
+        "GitHub Changelog — BYOK / Copilot CLI GA / Code Review Updates / Enterprise Plugin Marketplace / AI Adoption Metrics"
+      ]
+    },
+    {
+      "title": "Team agents need channel-scoped memory, tool boundaries, spend controls, and audit logs",
+      "summary": "Anthropic Claude Tag is captured as a signal that agents are moving from individual chat sessions into team workspace contexts, where each channel or workspace needs scoped memory, scoped tools, asynchronous task lifecycle, admin controls, spend limits, and auditability.",
+      "themes": [
+        "agent-runtime",
+        "ai-platforms",
+        "ai-security",
+        "backend-architecture",
+        "observability"
+      ],
+      "evidence": [
+        "Anthropic — Introducing Claude Tag"
+      ]
+    },
+    {
+      "title": "Computer-use agents require action policy for sensitive and irreversible operations",
+      "summary": "Google DeepMind's Gemini 3.5 Flash computer-use integration is captured as a runtime safety signal: agents that act in browser, mobile, and desktop interfaces need risk classification, confirmation gates, sandboxing, strict access controls, prompt-injection stopping behavior, and audit logs for external or irreversible actions.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "computer-use",
+        "llm-infrastructure",
+        "observability"
+      ],
+      "evidence": [
+        "Google DeepMind — Introducing computer use in Gemini 3.5 Flash"
+      ]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Agent Context + Policy Gate",
+      "summary": "Build a minimal control layer where every model call, tool call, memory call, and computer action carries AgentContext and passes a policy gate before execution, with budget checks, allowlisted tools and scopes, confirmation gates for high-risk actions, and JSONL audit logging.",
+      "themes": [
+        "agent-runtime",
+        "ai-security",
+        "backend-architecture",
+        "computer-use",
+        "multi-tenancy",
+        "observability"
+      ]
+    }
+  ],
+  "markdown_path": "radars/2026/2026-06-29.md"
+}

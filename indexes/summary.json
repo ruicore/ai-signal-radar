@@ -1,15 +1,17 @@
 {
-  "weekly_radar_count": 2,
-  "signal_count": 10,
-  "idea_count": 2,
+  "weekly_radar_count": 4,
+  "signal_count": 20,
+  "idea_count": 4,
   "theme_counts": {
-    "agent-runtime": 2,
-    "ai-platforms": 2,
-    "ai-security": 2,
-    "backend-architecture": 2,
-    "coding-agents": 2,
-    "evaluation": 2,
-    "llm-infrastructure": 2,
-    "observability": 2
+    "agent-runtime": 4,
+    "ai-platforms": 4,
+    "ai-security": 4,
+    "backend-architecture": 4,
+    "coding-agents": 4,
+    "computer-use": 1,
+    "evaluation": 4,
+    "llm-infrastructure": 4,
+    "multi-tenancy": 1,
+    "observability": 4
   }
 }
