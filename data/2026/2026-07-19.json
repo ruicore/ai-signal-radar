@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-07-19",
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Agent instructions are becoming testable, releasable behavior configuration",
+      "summary": "GitHub Copilot Code Review can read instructions and skills from a PR head branch, while Codex rolled back an automated-review prompt regression. Prompts, skills, repository instructions, and tool policy need versioning, validation, behavior evaluation, canaries, metrics, and rollback.",
+      "themes": ["coding-agents", "evaluation", "ai-platforms"],
+      "evidence": ["GitHub Copilot Code Review Changelog", "OpenAI Codex Changelog"]
+    },
+    {
+      "title": "Agent runtime reliability is defined by session, concurrency, and retry semantics",
+      "summary": "OpenAI Agents SDK Python v0.18.3 fixes concurrent provider isolation, serialized session initialization, streamed retry input retention, identity reuse, SQLite metadata leakage, schema resource bounds, and trace redaction. Production frameworks must make these asynchronous-system invariants explicit.",
+      "themes": ["agent-runtime", "llm-infrastructure", "observability", "ai-security"],
+      "evidence": ["OpenAI Agents SDK Python v0.18.3"]
+    },
+    {
+      "title": "MCP tool identity is becoming a software supply-chain boundary",
+      "summary": "Visual Studio compares MCP server configuration and asset fingerprints to a trusted baseline at startup and requires reapproval after changes. Tool governance needs verified artifacts, configuration and schema hashes, capability review, sandboxing, and invocation audit.",
+      "themes": ["ai-security", "ai-platforms", "coding-agents"],
+      "evidence": ["GitHub Copilot in Visual Studio — June Update"]
+    },
+    {
+      "title": "Agent observability is moving toward workload and cost attribution",
+      "summary": "GitHub now exposes repository-level coding-agent and code-review activity plus session, prompt, request, and token metrics. Activity metrics need correlation with PRs, CI, deployments, incidents, rework, defects, and lead time before they can support outcome claims.",
+      "themes": ["observability", "ai-platforms", "evaluation", "coding-agents"],
+      "evidence": ["GitHub Copilot Usage Metrics API"]
+    },
+    {
+      "title": "IDEs are evolving into model-neutral agent control planes",
+      "summary": "JetBrains Copilot combines custom OpenAI-compatible endpoints, BYOK, plugin distribution, provider-specific skills and instructions, local sandboxing, and agent-driven debugging. Model portability still requires a tested Model × Harness × Tool Set × Sandbox × Task Type matrix.",
+      "themes": ["ai-platforms", "coding-agents", "ai-security", "evaluation"],
+      "evidence": ["GitHub Copilot for JetBrains"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Agent behavior release pipeline",
+      "summary": "Build a governed release path for prompts, skills, repository instructions, and tool policy: record profile version and precedence, run static validation and behavior evaluations, canary changes, link production metrics, and retain rollback records alongside model and tool versions.",
+      "themes": ["coding-agents", "evaluation", "ai-platforms", "observability", "ai-security"]
+    }
+  ],
+  "markdown_path": "radars/2026/2026-07-19.md"
+}
