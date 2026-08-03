@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-07-26",
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "MCP statelessness makes tool infrastructure cloud-native",
+      "summary": "The new MCP specification removes protocol sessions and initialization handshakes, while adding routable headers, cache semantics, W3C Trace Context, extensions, and a conformance suite. Tool servers can use ordinary load balancing, but application state must move to explicit handles and durable workflow state.",
+      "themes": ["llm-infrastructure", "ai-platforms", "observability"],
+      "evidence": ["GitHub MCP Server supports the next MCP specification", "Model Context Protocol 2026-07-28 Specification Release Candidate"]
+    },
+    {
+      "title": "Concurrency, spawn depth, and network egress are first-class agent runtime policy",
+      "summary": "Claude Code adds bounded sub-agent concurrency, nested-spawn controls, strict network allowlists, trace forwarding, and structured runner failures. Production autonomy needs admission control and separate budgets for tokens, time, tools, concurrency, depth, network, filesystem, and human approval.",
+      "themes": ["agent-runtime", "ai-security", "ai-platforms"],
+      "evidence": ["Anthropic Claude Code v2.1.217 and v2.1.219 releases"]
+    },
+    {
+      "title": "Confidence, rationale, and approval form an agent action envelope",
+      "summary": "GitHub Issues Agent Automation attaches confidence, rationale, and approval state to proposed changes. These fields help workflow governance but do not replace server-side authorization; reasoning, approval policy, and IAM must remain separate layers.",
+      "themes": ["ai-security", "coding-agents", "evaluation"],
+      "evidence": ["Agent automation controls in GitHub Issues in public preview"]
+    },
+    {
+      "title": "Issue trackers are becoming agent control planes over replaceable workers",
+      "summary": "Copilot Cloud Agent for Linear accepts issues, runs in ephemeral environments, reports progress, creates draft PRs, and accepts steering during execution. Durable task identity must connect issue, session, runner, branch, PR, CI, deployment, and incident records.",
+      "themes": ["ai-platforms", "agent-runtime", "observability", "coding-agents"],
+      "evidence": ["Copilot cloud agent for Linear is now generally available"]
+    },
+    {
+      "title": "Agent evaluation is shifting from usage to adoption stage and engineering outcomes",
+      "summary": "GitHub's impact dashboard groups users by code-first, agent-first, and multi-agent adoption stages and relates them to PR volume and merge speed. These remain correlation signals; runtime, artifact, quality, and outcome data are needed to assess real productivity.",
+      "themes": ["evaluation", "observability", "ai-platforms"],
+      "evidence": ["New Copilot usage metrics impact dashboard"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Stateless MCP migration and conformance harness",
+      "summary": "Build a migration harness that replaces protocol sessions with explicit handles, runs two stateless MCP instances behind round-robin routing, injects duplicate requests and retries, propagates W3C trace context, and executes Core, Auth, Draft, and backward-compatibility conformance suites in CI.",
+      "themes": ["llm-infrastructure", "agent-runtime", "evaluation", "observability", "ai-security"]
+    }
+  ],
+  "markdown_path": "radars/2026/2026-07-26.md"
+}
