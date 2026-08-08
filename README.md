@@ -1,105 +1,114 @@
 # ai-signal-radar
 
-`ai-signal-radar` is Ray's long-term personal AI systems engineering signal
-repository. Its primary reader is future Codex and AI agents that need durable
-context for product ideas, engineering directions, and recurring signals.
+`ai-signal-radar` is Ray's reviewed, multi-track AI signal repository. Its
+primary reader is future Codex and AI agents that need durable context for
+product ideas, engineering directions, creation patterns, and recurring
+signals.
 
-This is not a news archive. It is a reviewed personal signal repository.
-Weekly ChatGPT-generated radar reports are approved by Ray before ingestion.
-Only reviewed reports should become canonical repository data.
+This is not a news archive. Reports become canonical only after Ray reviews
+them. The repository currently has two independent but cross-searchable tracks:
 
-Codex should treat this repository as long-term context for future product and
-project ideas. Prefer the structured JSON under `data/`, then the reviewed
-Markdown under `radars/`, then derived indexes under `indexes/` and `themes/`.
+- `systems`: AI systems engineering, agent runtimes, infrastructure, security,
+  evaluation, and operational architecture.
+- `creation`: AI-native products and works that create a meaningful new human
+  behavior, medium, personal tool, learning experience, or cultural form.
 
-## Weekly operation flow
+The repository name remains intentionally broad: both tracks are AI signals,
+and the shared repository makes cross-track patterns retrievable without
+collapsing their evidence standards or schemas into one research lens.
 
-1. ChatGPT generates a weekly radar report.
-2. Ray reviews and approves the report.
-3. Ray pastes the approved report to Codex.
-4. Codex ingests it into `radars/YYYY/YYYY-MM-DD.md` and
-   `data/YYYY/YYYY-MM-DD.json`.
-5. Codex updates indexes and themes with `scripts/update_indexes.py`.
-6. Codex validates the content contract with `scripts/validate_content.py`.
-7. Codex commits and pushes the reviewed update.
+## Canonical paths
 
-Weekly ingestion remains human-in-the-loop. Automation may validate, index, and
-summarize reviewed records, but it should not decide which weekly report becomes
-canonical repository data.
-
-## What Ray should do every week
-
-1. Generate the weekly radar report outside this repository.
-2. Review the report for judgment, priority, and wording.
-3. Only after approval, give the final reviewed report to Codex for ingestion.
-4. Confirm the proposed date, title, themes, and generated file paths.
-5. Let Codex run validation, update derived indexes, and commit the reviewed
-   ingestion.
-
-Ray does not need to manually edit indexes, theme navigation, or monthly review
-scaffolds during normal weekly operation.
-
-## Monthly review flow
-
-The scheduled monthly workflow runs on the first day of each month and generates
-the previous UTC month by default. It can also be run manually for a specific
-`YYYY-MM` value.
-
-Monthly reviews are written to:
+Each record is uniquely identified by `radar_type + date`:
 
 ```text
-reports/monthly/YYYY-MM.md
+radars/<track>/YYYY/YYYY-MM-DD.md
+data/<track>/YYYY/YYYY-MM-DD.json
 ```
 
-The monthly review generator is deterministic and uses only reviewed JSON data
-and repository indexes. It does not call the OpenAI API and does not replace
-Ray's weekly review step. Its output is a review aid: counts, links, theme
-frequency, signal titles, and idea titles from existing repository data.
+The Markdown file preserves the approved report. The JSON file contains the
+durable, agent-friendly extraction. Prefer structured JSON for retrieval, then
+the approved Markdown, then derived indexes and theme views.
 
-Run it locally with:
+Creation records additionally preserve an observation window. Their signals
+may carry domain, creator, evidence level, what was created, what AI changed,
+the resulting human behavior, and a transferable idea. Creation patterns are
+stored separately from individual cases so they can recur across reports.
+
+## Human-reviewed ingestion flow
+
+1. ChatGPT generates a radar report outside this repository.
+2. Ray reviews and approves it.
+3. Codex stores the approved Markdown under its explicit track.
+4. Codex extracts structured JSON conforming to `schemas/radar.schema.json`.
+5. Codex regenerates indexes and the aggregate theme view.
+6. Codex validates schema, paths, pairings, theme references, and deterministic
+   outputs before committing.
+
+The track must never be inferred from a vague title when ingestion intent is
+unclear. Creation reports require explicit observation-window start and end
+dates. Missing evidence stays missing; it must not be upgraded or fabricated.
+
+## Creation admission standard
+
+A Creation Radar case should normally meet all three conditions:
+
+- the work or product is accessible enough to inspect;
+- the changed human behavior can be explained;
+- the constraint changed by AI is explicit.
+
+Volume, speed, or an AI label alone is insufficient. Record evidence levels
+faithfully, distinguish creator/vendor claims from first-hand checks, and do
+not treat a generated draft or press article as proof of live-product behavior.
+
+## Derived navigation
+
+- `indexes/radars.json`: all reviewed records, ordered by date and track.
+- `indexes/tracks.json`: per-track record navigation.
+- `indexes/themes.json`: cross-track theme occurrences with track provenance.
+- `indexes/summary.json`: repository and per-track counts.
+- `themes/README.md`: generated cross-track theme navigation.
+- `themes/<track>/`: curated track-specific theme definitions and recurring
+  judgments.
+- `ideas/`: ideas promoted from recurring signals or explicit report takeaways.
+
+Derived files must be regenerated rather than manually reconciled:
 
 ```bash
-uv run python scripts/generate_monthly_review.py YYYY-MM
+uv run python scripts/update_indexes.py
 ```
 
-## CI validation contract
+## Monthly reviews
 
-CI protects the repository contract on every push and pull request:
+Monthly reviews are deterministic review aids generated from canonical JSON:
 
-- `uv run ruff check .`
-- `uv run pytest`
-- `uv run python scripts/validate_content.py`
-- `uv run python scripts/update_indexes.py`
-- `git diff --exit-code`
+```text
+reports/monthly/<track>/YYYY-MM.md
+```
 
-The content validator enforces these rules:
+Run one track locally with:
 
-- Every `data/YYYY/*.json` record must validate against
-  `schemas/weekly_radar.schema.json`.
-- Every data record must point to its matching
-  `radars/YYYY/YYYY-MM-DD.md` file.
-- Every radar Markdown file must have a matching data JSON file.
-- Signal and idea theme references must be present in the record-level themes.
-- Derived indexes and `themes/README.md` must match the deterministic output of
-  `scripts/update_indexes.py`.
-
-If running `scripts/update_indexes.py` changes the working tree, CI fails until
-the regenerated files are committed.
+```bash
+uv run python scripts/generate_monthly_review.py YYYY-MM --track systems
+uv run python scripts/generate_monthly_review.py YYYY-MM --track creation
+```
 
 ## Repository layout
 
-- `radars/`: reviewed weekly radar reports in Markdown.
-- `data/`: structured JSON records derived from reviewed weekly reports.
-- `themes/`: derived theme views and theme notes.
-- `ideas/`: product and project ideas promoted from recurring signals.
-- `indexes/`: searchable indexes for agents.
-- `reports/`: deterministic monthly and future period-review outputs.
-- `inbox/`: temporary staging area for approved reports before ingestion.
-- `scripts/`: local maintenance scripts.
-- `schemas/`: JSON schemas for structured records.
-- `prompts/`: agent instructions for repeatable workflows.
+- `radars/`: approved source reports, partitioned by track.
+- `data/`: structured records, partitioned by track.
+- `themes/`: generated cross-track navigation and curated track definitions.
+- `ideas/`: promoted product and project ideas.
+- `indexes/`: deterministic machine-readable navigation.
+- `reports/`: deterministic monthly and future period reviews.
+- `inbox/`: temporary staging for approved reports.
+- `scripts/`: ingestion, indexing, rendering, review, and validation tools.
+- `schemas/`: the multi-track content contract.
+- `prompts/`: agent instructions for repeatable ingestion.
 
-## Local validation
+## Validation contract
+
+CI and local validation use:
 
 ```bash
 uv sync
@@ -107,4 +116,9 @@ uv run ruff check .
 uv run pytest
 uv run python scripts/validate_content.py
 uv run python scripts/update_indexes.py
+git diff --exit-code
 ```
+
+The validator requires every Markdown report and JSON record to form a matching
+track/date pair, every nested theme reference to exist at record level, and all
+derived outputs to match the deterministic generators.

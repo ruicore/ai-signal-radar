@@ -1,4 +1,4 @@
-"""Render a weekly radar JSON record back to Markdown."""
+"""Render a radar JSON record back to Markdown."""
 
 from __future__ import annotations
 
@@ -31,6 +31,21 @@ def render(record: dict[str, object]) -> str:
         for signal in signals:
             lines.extend([f"### {signal['title']}", "", str(signal["summary"]).strip(), ""])
 
+    patterns = record.get("patterns", [])
+    if patterns:
+        lines.extend(["## Patterns", ""])
+        for pattern in patterns:
+            lines.extend(
+                [
+                    f"### {pattern['title']}",
+                    "",
+                    str(pattern["summary"]).strip(),
+                    "",
+                    f"Outlook: {str(pattern['outlook']).strip()}",
+                    "",
+                ]
+            )
+
     ideas = record.get("ideas", [])
     if ideas:
         lines.extend(["## Ideas", ""])
@@ -54,4 +69,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

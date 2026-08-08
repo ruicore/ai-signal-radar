@@ -1,4 +1,4 @@
-"""Rebuild agent-friendly indexes from structured weekly radar JSON files."""
+"""Rebuild agent-friendly indexes from structured multi-track radar JSON files."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ DATA_ROOT = REPO_ROOT / "data"
 
 def load_records() -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
-    for path in sorted(DATA_ROOT.glob("*/*.json")):
+    for path in sorted(DATA_ROOT.glob("*/*/*.json")):
         records.append(json.loads(path.read_text(encoding="utf-8")))
     return records
 
@@ -27,25 +27,40 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def build_weekly_index(records: list[dict[str, Any]]) -> list[dict[str, object]]:
+def data_path(record: dict[str, Any]) -> str:
+    return (
+        f"data/{record['radar_type']}/{record['date'][:4]}/{record['date']}.json"
+    )
+
+
+def build_radar_index(records: list[dict[str, Any]]) -> list[dict[str, object]]:
     return [
         {
+            "radar_type": record["radar_type"],
             "date": record["date"],
             "title": record["title"],
             "themes": record.get("themes", []),
             "markdown_path": record["markdown_path"],
-            "data_path": f"data/{record['date'][:4]}/{record['date']}.json",
+            "data_path": data_path(record),
         }
-        for record in sorted(records, key=lambda item: item["date"])
+        for record in sorted(records, key=lambda item: (item["date"], item["radar_type"]))
     ]
+
+
+def build_track_index(records: list[dict[str, Any]]) -> dict[str, list[dict[str, object]]]:
+    tracks: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for entry in build_radar_index(records):
+        tracks[str(entry["radar_type"])].append(entry)
+    return dict(sorted(tracks.items()))
 
 
 def build_theme_index(records: list[dict[str, Any]]) -> dict[str, list[dict[str, str]]]:
     themes: dict[str, list[dict[str, str]]] = defaultdict(list)
-    for record in sorted(records, key=lambda item: item["date"]):
+    for record in sorted(records, key=lambda item: (item["date"], item["radar_type"])):
         for theme in record.get("themes", []):
             themes[theme].append(
                 {
+                    "radar_type": record["radar_type"],
                     "date": record["date"],
                     "title": record["title"],
                     "markdown_path": record["markdown_path"],
@@ -61,7 +76,10 @@ def render_theme_readme(theme_index: dict[str, list[dict[str, str]]]) -> str:
     for theme, entries in theme_index.items():
         lines.extend([f"## {theme}", ""])
         for entry in entries:
-            lines.append(f"- {entry['date']}: [{entry['title']}](../{entry['markdown_path']})")
+            lines.append(
+                f"- {entry['date']} [{entry['radar_type']}]: "
+                f"[{entry['title']}](../{entry['markdown_path']})"
+            )
         lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
@@ -70,15 +88,21 @@ def build_summary(records: list[dict[str, Any]]) -> dict[str, object]:
     theme_counts: Counter[str] = Counter()
     signal_count = 0
     idea_count = 0
+    pattern_count = 0
+    radar_counts: Counter[str] = Counter()
     for record in records:
         theme_counts.update(record.get("themes", []))
+        radar_counts.update([record["radar_type"]])
         signal_count += len(record.get("signals", []))
         idea_count += len(record.get("ideas", []))
+        pattern_count += len(record.get("patterns", []))
 
     return {
-        "weekly_radar_count": len(records),
+        "radar_count": len(records),
+        "radar_counts": dict(sorted(radar_counts.items())),
         "signal_count": signal_count,
         "idea_count": idea_count,
+        "pattern_count": pattern_count,
         "theme_counts": dict(sorted(theme_counts.items())),
     }
 
@@ -86,7 +110,8 @@ def build_summary(records: list[dict[str, Any]]) -> dict[str, object]:
 def build_index_outputs(records: list[dict[str, Any]]) -> dict[Path, str]:
     theme_index = build_theme_index(records)
     return {
-        Path("indexes/weekly_radars.json"): render_json(build_weekly_index(records)),
+        Path("indexes/radars.json"): render_json(build_radar_index(records)),
+        Path("indexes/tracks.json"): render_json(build_track_index(records)),
         Path("indexes/themes.json"): render_json(theme_index),
         Path("indexes/summary.json"): render_json(build_summary(records)),
         Path("themes/README.md"): render_theme_readme(theme_index),

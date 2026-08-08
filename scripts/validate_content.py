@@ -18,7 +18,7 @@ from scripts.update_indexes import build_index_outputs  # noqa: E402
 
 DATA_ROOT = REPO_ROOT / "data"
 RADARS_ROOT = REPO_ROOT / "radars"
-SCHEMA_PATH = REPO_ROOT / "schemas" / "weekly_radar.schema.json"
+SCHEMA_PATH = REPO_ROOT / "schemas" / "radar.schema.json"
 
 
 def relative(path: Path) -> str:
@@ -58,8 +58,15 @@ def validate_file_shape(path: Path, root: Path, extension: str) -> list[str]:
     errors: list[str] = []
     rel_path = relative(path)
 
-    if path.parent.parent != root:
-        errors.append(f"{rel_path}: expected path shape {root.name}/YYYY/YYYY-MM-DD{extension}")
+    if path.parent.parent.parent != root:
+        errors.append(
+            f"{rel_path}: expected path shape "
+            f"{root.name}/TRACK/YYYY/YYYY-MM-DD{extension}"
+        )
+
+    radar_type = path.parent.parent.name
+    if radar_type not in {"systems", "creation"}:
+        errors.append(f"{rel_path}: track must be systems or creation")
 
     year = path.parent.name
     if len(year) != 4 or not year.isdigit():
@@ -92,9 +99,18 @@ def validate_record_paths(path: Path, record: dict[str, Any]) -> list[str]:
     if record_date is None:
         return errors
 
-    expected_data_path = Path("data") / f"{record_date:%Y}" / f"{record_date.isoformat()}.json"
+    radar_type = record.get("radar_type")
+    if not isinstance(radar_type, str):
+        return [*errors, f"{rel_path}:radar_type: must be a string"]
+
+    expected_data_path = (
+        Path("data") / radar_type / f"{record_date:%Y}" / f"{record_date.isoformat()}.json"
+    )
     expected_markdown_path = (
-        Path("radars") / f"{record_date:%Y}" / f"{record_date.isoformat()}.md"
+        Path("radars")
+        / radar_type
+        / f"{record_date:%Y}"
+        / f"{record_date.isoformat()}.md"
     )
 
     if path.relative_to(REPO_ROOT) != expected_data_path:
@@ -126,7 +142,7 @@ def validate_theme_references(path: Path, record: dict[str, Any]) -> list[str]:
         return errors
     record_themes = {theme for theme in record_theme_values if isinstance(theme, str)}
 
-    for collection_name in ("signals", "ideas"):
+    for collection_name in ("signals", "patterns", "ideas"):
         collection = record.get(collection_name, [])
         if not isinstance(collection, list):
             continue
@@ -147,7 +163,24 @@ def validate_theme_references(path: Path, record: dict[str, Any]) -> list[str]:
     return errors
 
 
-def validate_radar_pairs(data_by_date: dict[str, Path]) -> list[str]:
+def validate_observation_window(path: Path, record: dict[str, Any]) -> list[str]:
+    window = record.get("observation_window")
+    if not isinstance(window, dict):
+        return []
+
+    start, start_errors = parse_date(
+        window.get("start"), f"{relative(path)}:observation_window.start"
+    )
+    end, end_errors = parse_date(
+        window.get("end"), f"{relative(path)}:observation_window.end"
+    )
+    errors = [*start_errors, *end_errors]
+    if start and end and start > end:
+        errors.append(f"{relative(path)}: observation-window start must not be after end")
+    return errors
+
+
+def validate_radar_pairs(data_by_key: dict[tuple[str, str], Path]) -> list[str]:
     errors: list[str] = []
     for path in radar_paths():
         errors.extend(validate_file_shape(path, RADARS_ROOT, ".md"))
@@ -155,8 +188,11 @@ def validate_radar_pairs(data_by_date: dict[str, Path]) -> list[str]:
         errors.extend(date_errors)
         if parsed is None:
             continue
-        expected = Path("data") / f"{parsed:%Y}" / f"{parsed.isoformat()}.json"
-        if parsed.isoformat() not in data_by_date:
+        radar_type = path.parent.parent.name
+        expected = (
+            Path("data") / radar_type / f"{parsed:%Y}" / f"{parsed.isoformat()}.json"
+        )
+        if (radar_type, parsed.isoformat()) not in data_by_key:
             errors.append(f"{relative(path)}: missing matching {expected.as_posix()}")
     return errors
 
@@ -184,7 +220,7 @@ def validate() -> list[str]:
 
     errors: list[str] = []
     records: list[dict[str, Any]] = []
-    data_by_date: dict[str, Path] = {}
+    data_by_key: dict[tuple[str, str], Path] = {}
 
     for path in data_paths():
         errors.extend(validate_file_shape(path, DATA_ROOT, ".json"))
@@ -196,19 +232,22 @@ def validate() -> list[str]:
         errors.extend(schema_errors(path, record, validator))
         errors.extend(validate_record_paths(path, record))
         errors.extend(validate_theme_references(path, record))
+        errors.extend(validate_observation_window(path, record))
 
         record_date = record.get("date")
-        if isinstance(record_date, str):
-            if record_date in data_by_date:
+        radar_type = record.get("radar_type")
+        if isinstance(record_date, str) and isinstance(radar_type, str):
+            key = (radar_type, record_date)
+            if key in data_by_key:
                 errors.append(
-                    f"{relative(path)}: duplicate radar date also found in "
-                    f"{relative(data_by_date[record_date])}"
+                    f"{relative(path)}: duplicate {radar_type} radar date also found in "
+                    f"{relative(data_by_key[key])}"
                 )
-            data_by_date[record_date] = path
+            data_by_key[key] = path
 
         records.append(record)
 
-    errors.extend(validate_radar_pairs(data_by_date))
+    errors.extend(validate_radar_pairs(data_by_key))
     errors.extend(validate_indexes(records))
     return errors
 

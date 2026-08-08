@@ -1,0 +1,182 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "creation",
+  "date": "2026-08-05",
+  "observation_window": {
+    "start": "2026-07-30",
+    "end": "2026-08-05"
+  },
+  "title": "AI Native Creation Radar",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "generated-commons",
+    "generated-curriculum",
+    "personal-software",
+    "playable-self-expression",
+    "software-as-cultural-release"
+  ],
+  "signals": [
+    {
+      "title": "云阙问剑 v7 / MakePlay Arcade",
+      "summary": "A browser- and mobile-playable bilingual xianxia action, platform, and RPG work shows personal cultural expression becoming a playable world rather than remaining text, image, or video.",
+      "themes": [
+        "playable-self-expression"
+      ],
+      "evidence": [
+        "https://makeplay.ai/",
+        "https://makeplay.ai/p/6d6dek3vxd"
+      ],
+      "evidence_level": "Real Product / Live Experiment",
+      "domain": "Game / Interactive Entertainment",
+      "creator": "Soran; MakePlay",
+      "what_was_created": "A directly playable and shareable xianxia game at version 7, built inside a natural-language creation and publishing workflow that combines characters, animation, rules, music, and levels.",
+      "what_ai_changed": "AI reduced coordination costs across visual assets, animation, game logic, music, level design, hosting, and distribution.",
+      "human_behavior_change": "A creator can turn a personal aesthetic or small-community reference into rules, space, failure conditions, and replayable interaction, then continue directing it through versions.",
+      "transferable_idea": "When AI compresses several specialist roles into one interface, preserve playtesting, revision, and ongoing direction instead of stopping at one-click generation."
+    },
+    {
+      "title": "Gauth AI Course",
+      "summary": "Gauth combines cinematic narrative, concept maps, immediate questions, tutoring, and recall quizzes into courses that can be assembled around a topic and learner level.",
+      "themes": [
+        "generated-curriculum"
+      ],
+      "evidence": [
+        "https://www.gauth.com/course",
+        "https://www.bastillepost.com/global/article/6051305-gauth-launches-ai-course-feature-to-transform-learning-into-immersive-video-stories"
+      ],
+      "evidence_level": "Real Product; learning outcomes are Vendor Claim",
+      "domain": "Education / Learning",
+      "creator": "Gauth; Seedance 2.5 collaboration",
+      "what_was_created": "Accessible cinematic history courses and a path for learners to generate a micro-course from a topic and ability level.",
+      "what_ai_changed": "AI lowered the marginal production cost of scripts, narration, scenes, diagrams, questions, and level adaptation for multimodal courses.",
+      "human_behavior_change": "A learner can request a temporary course around a specific confusion instead of only searching within fixed chapters and prerecorded lessons.",
+      "transferable_idea": "Personalization can change explanatory narrative, examples, pacing, and interaction path, not only content difficulty."
+    },
+    {
+      "title": "Meditation Timer Soundscapes",
+      "summary": "A creator generated, deployed, pinned, and reportedly uses a deliberately simple meditation timer every day after existing subscription products failed to match a narrow personal ritual.",
+      "themes": [
+        "personal-software"
+      ],
+      "evidence": [
+        "https://www.techradar.com/ai-platforms-assistants/gemini/i-stopped-looking-for-the-perfect-meditation-app-and-built-my-own-using-ai-and-it-was-done-in-under-5-minutes"
+      ],
+      "evidence_level": "Real Product / Creator Claim",
+      "domain": "Lifestyle / Personal Software",
+      "creator": "Graham Barlow",
+      "what_was_created": "A deployed Web App with a calm visual design, ten-minute default, preparation time, breathing guidance, interval bells, themes, and environmental sound.",
+      "what_ai_changed": "AI reduced the translation cost between a precise personal need, interface design, implementation, and deployment.",
+      "human_behavior_change": "Failure to find the right low-risk app can now lead directly to making a personal tool instead of continuing to search or tolerating unwanted product complexity.",
+      "transferable_idea": "For bounded, low-risk personal needs, optimize for exact fit with one ritual rather than maximum market coverage."
+    },
+    {
+      "title": "Koboyo Icons",
+      "summary": "An independent creator used AI to publish a searchable, semantically organized library of roughly 93,000 hand-drawn-style SVG icons covering common and long-tail concepts.",
+      "themes": [
+        "generated-commons"
+      ],
+      "evidence": [
+        "https://koboyo.com/icons.html",
+        "https://news.ycombinator.com/item?id=49139602"
+      ],
+      "evidence_level": "Open Design Library / Creator Claim",
+      "domain": "Design / Open Creative Commons",
+      "creator": "Kamran Ahmed",
+      "what_was_created": "A large free SVG icon library organized across people, actions, emotions, culture, science, system design, education, and everyday concepts.",
+      "what_ai_changed": "AI made it economically possible for one creator to cover a very long tail of visual concepts that a conventional design team would not prioritize.",
+      "human_behavior_change": "A creator can build a public visual-language database at a scale previously associated with teams, while users search within a coherent semantic system rather than collect isolated generated assets.",
+      "transferable_idea": "When generation cost approaches zero, value moves to classification, naming, retrieval, quality thresholds, consistency, licensing, and provenance."
+    },
+    {
+      "title": "A Vinyl Bar in Shibuya / Bop",
+      "summary": "A small team treats software like a music label treats releases, while Bop turns listening into an interactive act of separating, remixing, and replaying human-made music.",
+      "themes": [
+        "software-as-cultural-release"
+      ],
+      "evidence": [
+        "https://www.techradar.com/audio/audio-streaming/the-next-major-music-platform-should-give-people-something-to-do-with-the-music-spotifys-former-head-of-innovation-on-his-plans-to-launch-an-interactive-music-service-and-whether-ai-features-will-help-or-hinder-streaming",
+        "https://apps.apple.com/us/app/bop-pocket-dj/id6689490701"
+      ],
+      "evidence_level": "Real Product / Creator Interview",
+      "domain": "Music / Creator Economy / Interactive Media",
+      "creator": "Mauhan M. Zonoozy; A Vinyl Bar in Shibuya",
+      "what_was_created": "Bop, a Pocket DJ for separating vocals, drums, chords, and bass, changing tempo and pitch, and remixing through a pad interface, inside a broader catalog of small music applications.",
+      "what_ai_changed": "AI enabled a small team to develop and release experimental software continuously while remaining hidden from the consumer proposition; the music stems remain human-made.",
+      "human_behavior_change": "Listeners become temporary DJs who manipulate music, and software can be released, experienced, collected, and remembered like a song or small cultural work.",
+      "transferable_idea": "AI can remain production infrastructure; design the product around the new verb a person gains rather than around a visible AI feature."
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Personal Software",
+      "summary": "Software can exist for one person and one exact habit without needing a mass market, roadmap, or subscription business.",
+      "outlook": "Likely to become a stable form for bounded, low-risk personal tools; formal software retains advantages in safety, payments, complex synchronization, and long-term maintenance.",
+      "themes": [
+        "personal-software"
+      ],
+      "examples": [
+        "Meditation Timer Soundscapes"
+      ]
+    },
+    {
+      "title": "Playable Self-expression",
+      "summary": "Personal aesthetics, stories, opinions, and community references can become playable rule systems rather than static media.",
+      "outlook": "May form a medium between games, social content, fan creation, personal gifts, and short-lived interactive works.",
+      "themes": [
+        "playable-self-expression"
+      ],
+      "examples": [
+        "云阙问剑 v7 / MakePlay Arcade"
+      ]
+    },
+    {
+      "title": "Generated Curriculum",
+      "summary": "A course can be assembled around a topic, current ability, and immediate confusion as a temporary learning object.",
+      "outlook": "High potential, but durable value depends on factual reliability, cognitive design, difficulty control, and measured learning outcomes rather than cinematic quality.",
+      "themes": [
+        "generated-curriculum"
+      ],
+      "examples": [
+        "Gauth AI Course"
+      ]
+    },
+    {
+      "title": "Software as Cultural Release",
+      "summary": "Small applications can be released like songs, publications, or artworks, with limited functions and a distinct creative identity rather than an obligation to become expanding SaaS products.",
+      "outlook": "Could support software labels, interactive catalogs, limited releases, and creator identities organized by aesthetic rather than feature category.",
+      "themes": [
+        "software-as-cultural-release"
+      ],
+      "examples": [
+        "A Vinyl Bar in Shibuya / Bop"
+      ]
+    },
+    {
+      "title": "Generated Commons",
+      "summary": "AI lets individuals build public resource libraries at database scale, including a long tail that conventional production economics would exclude.",
+      "outlook": "The durable moat will come from information architecture, selection, consistency, licensing, accessibility, and trustworthy provenance rather than asset count.",
+      "themes": [
+        "generated-commons"
+      ],
+      "examples": [
+        "Koboyo Icons"
+      ]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Executable Field Notes",
+      "summary": "Attach a three-to-five-minute interactive scenario to a research or engineering judgment: let a reader choose through a real trade-off, observe short-term benefits and long-term costs, change conditions, and then inspect the analysis and evidence.",
+      "themes": [
+        "playable-self-expression",
+        "software-as-cultural-release"
+      ]
+    }
+  ],
+  "markdown_path": "radars/creation/2026/2026-08-05.md"
+}

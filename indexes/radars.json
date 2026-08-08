@@ -1,5 +1,6 @@
 [
   {
+    "radar_type": "systems",
     "date": "2026-06-15",
     "title": "AI Systems Engineering 技术雷达（高信号版）",
     "themes": [
@@ -12,10 +13,11 @@
       "llm-infrastructure",
       "observability"
     ],
-    "markdown_path": "radars/2026/2026-06-15.md",
-    "data_path": "data/2026/2026-06-15.json"
+    "markdown_path": "radars/systems/2026/2026-06-15.md",
+    "data_path": "data/systems/2026/2026-06-15.json"
   },
   {
+    "radar_type": "systems",
     "date": "2026-06-22",
     "title": "AI Systems Engineering 技术雷达（高信号版）",
     "themes": [
@@ -28,10 +30,11 @@
       "llm-infrastructure",
       "observability"
     ],
-    "markdown_path": "radars/2026/2026-06-22.md",
-    "data_path": "data/2026/2026-06-22.json"
+    "markdown_path": "radars/systems/2026/2026-06-22.md",
+    "data_path": "data/systems/2026/2026-06-22.json"
   },
   {
+    "radar_type": "systems",
     "date": "2026-06-29",
     "title": "AI Systems Engineering 技术雷达（高信号版）",
     "themes": [
@@ -46,10 +49,11 @@
       "multi-tenancy",
       "observability"
     ],
-    "markdown_path": "radars/2026/2026-06-29.md",
-    "data_path": "data/2026/2026-06-29.json"
+    "markdown_path": "radars/systems/2026/2026-06-29.md",
+    "data_path": "data/systems/2026/2026-06-29.json"
   },
   {
+    "radar_type": "systems",
     "date": "2026-07-06",
     "title": "AI Systems Engineering 技术雷达（高信号版）",
     "themes": [
@@ -62,10 +66,11 @@
       "llm-infrastructure",
       "observability"
     ],
-    "markdown_path": "radars/2026/2026-07-06.md",
-    "data_path": "data/2026/2026-07-06.json"
+    "markdown_path": "radars/systems/2026/2026-07-06.md",
+    "data_path": "data/systems/2026/2026-07-06.json"
   },
   {
+    "radar_type": "systems",
     "date": "2026-07-19",
     "title": "AI Systems Engineering 技术雷达（高信号版）",
     "themes": [
@@ -77,10 +82,11 @@
       "llm-infrastructure",
       "observability"
     ],
-    "markdown_path": "radars/2026/2026-07-19.md",
-    "data_path": "data/2026/2026-07-19.json"
+    "markdown_path": "radars/systems/2026/2026-07-19.md",
+    "data_path": "data/systems/2026/2026-07-19.json"
   },
   {
+    "radar_type": "systems",
     "date": "2026-07-26",
     "title": "AI Systems Engineering 技术雷达（高信号版）",
     "themes": [
@@ -92,7 +98,21 @@
       "llm-infrastructure",
       "observability"
     ],
-    "markdown_path": "radars/2026/2026-07-26.md",
-    "data_path": "data/2026/2026-07-26.json"
+    "markdown_path": "radars/systems/2026/2026-07-26.md",
+    "data_path": "data/systems/2026/2026-07-26.json"
+  },
+  {
+    "radar_type": "creation",
+    "date": "2026-08-05",
+    "title": "AI Native Creation Radar",
+    "themes": [
+      "generated-commons",
+      "generated-curriculum",
+      "personal-software",
+      "playable-self-expression",
+      "software-as-cultural-release"
+    ],
+    "markdown_path": "radars/creation/2026/2026-08-05.md",
+    "data_path": "data/creation/2026/2026-08-05.json"
   }
 ]

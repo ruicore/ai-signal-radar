@@ -6,7 +6,7 @@ Agent capabilities that observe and act through browser, desktop, mobile, or oth
 
 ## Related Reports
 
-- 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../radars/2026/2026-06-29.md)
+- 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-29.md)
 
 ## Notable Recurring Signals
 

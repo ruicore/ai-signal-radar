@@ -1,4 +1,4 @@
-"""Ingest a Ray-approved weekly radar report into Markdown and JSON files."""
+"""Ingest a Ray-approved report into one repository radar track."""
 
 from __future__ import annotations
 
@@ -11,13 +11,24 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
+RADAR_TYPES = ("systems", "creation")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--track",
+        choices=RADAR_TYPES,
+        default="systems",
+        help="Radar track. Defaults to systems for backward-compatible CLI use.",
+    )
     parser.add_argument("--date", required=True, help="Reviewed report date, formatted YYYY-MM-DD.")
     parser.add_argument("--input", type=Path, help="Approved Markdown report. Defaults to stdin.")
     parser.add_argument("--title", help="Override report title.")
+    parser.add_argument(
+        "--window-start", help="Observation-window start date, formatted YYYY-MM-DD."
+    )
+    parser.add_argument("--window-end", help="Observation-window end date, formatted YYYY-MM-DD.")
     parser.add_argument(
         "--theme",
         action="append",
@@ -76,13 +87,25 @@ def extract_sections(markdown: str) -> list[dict[str, str]]:
 
 
 def record_from_markdown(
+    radar_type: str,
     report_date: date,
     markdown: str,
     title: str | None,
     themes: list[str],
     source_file: Path | None,
+    window_start: date | None = None,
+    window_end: date | None = None,
 ) -> dict[str, object]:
-    markdown_path = f"radars/{report_date:%Y}/{report_date.isoformat()}.md"
+    if radar_type not in RADAR_TYPES:
+        raise ValueError(f"unsupported radar track: {radar_type}")
+    if (window_start is None) != (window_end is None):
+        raise ValueError("observation window requires both start and end dates")
+    if radar_type == "creation" and (window_start is None or window_end is None):
+        raise ValueError("creation reports require an observation window")
+    if window_start and window_end and window_start > window_end:
+        raise ValueError("observation-window start must not be after its end")
+
+    markdown_path = f"radars/{radar_type}/{report_date:%Y}/{report_date.isoformat()}.md"
     unique_themes = sorted({theme.strip() for theme in themes if theme.strip()})
     sections = extract_sections(markdown)
     signals = [
@@ -91,7 +114,8 @@ def record_from_markdown(
     ]
 
     return {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
+        "radar_type": radar_type,
         "date": report_date.isoformat(),
         "title": title or first_heading(markdown) or f"AI Signal Radar {report_date.isoformat()}",
         "status": "reviewed",
@@ -104,6 +128,16 @@ def record_from_markdown(
         "themes": unique_themes,
         "signals": signals,
         "ideas": [],
+        **(
+            {
+                "observation_window": {
+                    "start": window_start.isoformat(),
+                    "end": window_end.isoformat(),
+                }
+            }
+            if window_start and window_end
+            else {}
+        ),
         "markdown_path": markdown_path,
         "raw_markdown": markdown,
     }
@@ -111,8 +145,21 @@ def record_from_markdown(
 
 def write_outputs(record: dict[str, object], markdown: str, force: bool) -> tuple[Path, Path]:
     report_date = date.fromisoformat(str(record["date"]))
-    radar_path = REPO_ROOT / "radars" / f"{report_date:%Y}" / f"{report_date.isoformat()}.md"
-    data_path = REPO_ROOT / "data" / f"{report_date:%Y}" / f"{report_date.isoformat()}.json"
+    radar_type = str(record["radar_type"])
+    radar_path = (
+        REPO_ROOT
+        / "radars"
+        / radar_type
+        / f"{report_date:%Y}"
+        / f"{report_date.isoformat()}.md"
+    )
+    data_path = (
+        REPO_ROOT
+        / "data"
+        / radar_type
+        / f"{report_date:%Y}"
+        / f"{report_date.isoformat()}.json"
+    )
 
     for path in (radar_path, data_path):
         if path.exists() and not force:
@@ -135,8 +182,19 @@ def main() -> int:
         return 2
 
     report_date = date.fromisoformat(args.date)
+    window_start = date.fromisoformat(args.window_start) if args.window_start else None
+    window_end = date.fromisoformat(args.window_end) if args.window_end else None
     markdown = read_markdown(args.input)
-    record = record_from_markdown(report_date, markdown, args.title, args.theme, args.input)
+    record = record_from_markdown(
+        args.track,
+        report_date,
+        markdown,
+        args.title,
+        args.theme,
+        args.input,
+        window_start,
+        window_end,
+    )
     radar_path, data_path = write_outputs(record, markdown, args.force)
     print(radar_path.relative_to(REPO_ROOT))
     print(data_path.relative_to(REPO_ROOT))

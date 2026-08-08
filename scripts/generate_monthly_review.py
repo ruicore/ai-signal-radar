@@ -1,4 +1,4 @@
-"""Generate a deterministic monthly review from reviewed weekly radar JSON and indexes."""
+"""Generate a deterministic monthly review for one radar track."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = REPO_ROOT / "data"
 INDEX_ROOT = REPO_ROOT / "indexes"
 MONTHLY_REPORT_ROOT = REPO_ROOT / "reports" / "monthly"
+RADAR_TYPES = ("systems", "creation")
 
 
 def parse_args() -> argparse.Namespace:
@@ -23,9 +24,15 @@ def parse_args() -> argparse.Namespace:
         help="Month to review, formatted YYYY-MM. Defaults to the previous UTC month.",
     )
     parser.add_argument(
+        "--track",
+        choices=RADAR_TYPES,
+        default="systems",
+        help="Radar track to review. Defaults to systems.",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
-        help="Output path. Defaults to reports/monthly/YYYY-MM.md.",
+        help="Output path. Defaults to reports/monthly/TRACK/YYYY-MM.md.",
     )
     return parser.parse_args()
 
@@ -41,36 +48,42 @@ def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def load_month(month: str) -> list[dict[str, Any]]:
+def load_month(month: str, radar_type: str) -> list[dict[str, Any]]:
     year = month[:4]
     records: list[dict[str, Any]] = []
-    for path in sorted((DATA_ROOT / year).glob(f"{month}-*.json")):
+    for path in sorted((DATA_ROOT / radar_type / year).glob(f"{month}-*.json")):
         records.append(load_json(path))
     return sorted(records, key=lambda item: item["date"])
 
 
 def load_indexes() -> dict[str, Any]:
     indexes: dict[str, Any] = {}
-    for name in ("weekly_radars", "themes", "summary"):
+    for name in ("radars", "tracks", "themes", "summary"):
         path = INDEX_ROOT / f"{name}.json"
         indexes[name] = load_json(path) if path.exists() else None
     return indexes
 
 
 def markdown_link(record: dict[str, Any]) -> str:
-    return f"[{record['title']}](../../{record['markdown_path']})"
+    return f"[{record['title']}](../../../{record['markdown_path']})"
 
 
-def count_monthly_items(records: list[dict[str, Any]]) -> tuple[int, int]:
+def count_monthly_items(records: list[dict[str, Any]]) -> tuple[int, int, int]:
     signal_count = sum(len(record.get("signals", [])) for record in records)
     idea_count = sum(len(record.get("ideas", [])) for record in records)
-    return signal_count, idea_count
+    pattern_count = sum(len(record.get("patterns", [])) for record in records)
+    return signal_count, idea_count, pattern_count
 
 
-def render(month: str, records: list[dict[str, Any]], indexes: dict[str, Any] | None = None) -> str:
+def render(
+    month: str,
+    records: list[dict[str, Any]],
+    radar_type: str,
+    indexes: dict[str, Any] | None = None,
+) -> str:
     indexes = indexes or {}
-    signal_count, idea_count = count_monthly_items(records)
-    lines = [f"# Monthly AI Signal Review: {month}", ""]
+    signal_count, idea_count, pattern_count = count_monthly_items(records)
+    lines = [f"# Monthly AI Signal Review: {radar_type} / {month}", ""]
     lines.extend(
         [
             "Generated deterministically from reviewed radar data and repository indexes.",
@@ -90,8 +103,9 @@ def render(month: str, records: list[dict[str, Any]], indexes: dict[str, Any] | 
         [
             "## Coverage",
             "",
-            f"- Reviewed weekly radars: {len(records)}",
+            f"- Reviewed radars: {len(records)}",
             f"- Signals captured: {signal_count}",
+            f"- Patterns captured: {pattern_count}",
             f"- Ideas captured: {idea_count}",
             "",
         ]
@@ -103,8 +117,11 @@ def render(month: str, records: list[dict[str, Any]], indexes: dict[str, Any] | 
             [
                 "## Repository Snapshot",
                 "",
-                f"- Total reviewed radars: {summary.get('weekly_radar_count', 0)}",
+                f"- Total reviewed radars: {summary.get('radar_count', 0)}",
+                f"- {radar_type.title()} radars: "
+                f"{summary.get('radar_counts', {}).get(radar_type, 0)}",
                 f"- Total signals: {summary.get('signal_count', 0)}",
+                f"- Total patterns: {summary.get('pattern_count', 0)}",
                 f"- Total ideas: {summary.get('idea_count', 0)}",
                 "",
             ]
@@ -131,6 +148,16 @@ def render(month: str, records: list[dict[str, Any]], indexes: dict[str, Any] | 
     if not signals_added:
         lines.append("- No signals captured.")
 
+    lines.extend(["", "## Patterns To Revisit", ""])
+    patterns_added = False
+    for record in records:
+        for pattern in sorted(record.get("patterns", []), key=lambda item: item["title"]):
+            themes = ", ".join(pattern.get("themes", [])) or "unthemed"
+            lines.append(f"- {record['date']} / {pattern['title']} ({themes})")
+            patterns_added = True
+    if not patterns_added:
+        lines.append("- No patterns captured.")
+
     lines.extend(["", "## Ideas To Revisit", ""])
     ideas_added = False
     for record in records:
@@ -147,9 +174,12 @@ def render(month: str, records: list[dict[str, Any]], indexes: dict[str, Any] | 
 def main() -> int:
     args = parse_args()
     month = args.month or previous_month()
-    output = args.output or MONTHLY_REPORT_ROOT / f"{month}.md"
+    output = args.output or MONTHLY_REPORT_ROOT / args.track / f"{month}.md"
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(render(month, load_month(month), load_indexes()), encoding="utf-8")
+    output.write_text(
+        render(month, load_month(month, args.track), args.track, load_indexes()),
+        encoding="utf-8",
+    )
     print(output.relative_to(REPO_ROOT))
     return 0
 

@@ -9,6 +9,15 @@ on:
         description: "Month to generate, formatted YYYY-MM. Defaults to the previous UTC month."
         required: false
         type: string
+      track:
+        description: "Track to generate, or all."
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - systems
+          - creation
 
 permissions:
   contents: write
@@ -44,21 +53,29 @@ jobs:
             echo "month=$(uv run python -c 'from scripts.generate_monthly_review import previous_month; print(previous_month())')" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Generate monthly review
-        run: uv run python scripts/generate_monthly_review.py "${{ steps.month.outputs.month }}"
+      - name: Generate monthly reviews
+        env:
+          REQUESTED_TRACK: ${{ inputs.track }}
+        run: |
+          tracks="systems creation"
+          if [ -n "$REQUESTED_TRACK" ] && [ "$REQUESTED_TRACK" != "all" ]; then
+            tracks="$REQUESTED_TRACK"
+          fi
+          for track in $tracks; do
+            uv run python scripts/generate_monthly_review.py "${{ steps.month.outputs.month }}" --track "$track"
+          done
 
       - name: Commit monthly review if changed
         env:
           MONTH: ${{ steps.month.outputs.month }}
         run: |
-          report_path="reports/monthly/${MONTH}.md"
-          if [ -z "$(git status --porcelain -- "$report_path")" ]; then
+          if [ -z "$(git status --porcelain -- reports/monthly)" ]; then
             echo "No monthly review changes to commit."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$report_path"
+          git add reports/monthly
           git commit -m "Generate monthly radar review ${MONTH}"
           git push

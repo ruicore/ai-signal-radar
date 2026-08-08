@@ -15,6 +15,13 @@ def test_render_structured_record() -> None:
         "title": "Weekly Radar",
         "themes": ["agents"],
         "signals": [{"title": "Agent Tooling", "summary": "Tooling improved."}],
+        "patterns": [
+            {
+                "title": "Durable Work",
+                "summary": "Work persists.",
+                "outlook": "Likely to recur.",
+            }
+        ],
         "ideas": [],
     }
 
@@ -23,4 +30,5 @@ def test_render_structured_record() -> None:
     assert "# Weekly Radar" in output
     assert "- agents" in output
     assert "### Agent Tooling" in output
-
+    assert "### Durable Work" in output
+    assert "Outlook: Likely to recur." in output
