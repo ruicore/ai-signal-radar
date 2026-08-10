@@ -117,6 +117,22 @@
       ],
       "markdown_path": "radars/systems/2026/2026-07-26.md",
       "data_path": "data/systems/2026/2026-07-26.json"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "themes": [
+        "agent-runtime",
+        "ai-platforms",
+        "ai-security",
+        "backend-architecture",
+        "coding-agents",
+        "evaluation",
+        "observability"
+      ],
+      "markdown_path": "radars/systems/2026/2026-08-07.md",
+      "data_path": "data/systems/2026/2026-08-07.json"
     }
   ]
 }

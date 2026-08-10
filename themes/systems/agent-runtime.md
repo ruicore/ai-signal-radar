@@ -8,7 +8,9 @@ Runtime substrate for agents, including persistent workspaces, scheduling, execu
 
 - 2026-06-15: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-15.md)
 - 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-29.md)
+- 2026-08-07: [AI Agent 生态与社区创造周报](../../radars/systems/2026/2026-08-07.md)
 
 ## Notable Recurring Signals
 
 - Agent runtime is repeatedly framed as production backend infrastructure with identity, scoped execution, lifecycle management, tool boundaries, and auditability rather than a single chat session.
+- Coding agents increasingly need explicit plan, process, runtime, handoff, QA, stop, and evidence semantics around model execution.

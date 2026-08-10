@@ -1,0 +1,121 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "systems",
+  "date": "2026-08-07",
+  "observation_window": {
+    "start": "2026-08-01",
+    "end": "2026-08-07"
+  },
+  "title": "AI Agent 生态与社区创造周报",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-platforms",
+    "ai-security",
+    "backend-architecture",
+    "coding-agents",
+    "evaluation",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "VibeGamesStudio models continuous software production as an agent organization",
+      "summary": "VibeGamesStudio assigns scheduled creative, implementation, improvement, code-health, QA, sound, and release work to distinct agents around a growing playable game catalog. The durable signal is the clock, bounded role contracts, artifact handoffs, and independent gate—not the creator's unverified zero-human framing.",
+      "themes": ["agent-runtime", "backend-architecture", "evaluation"],
+      "evidence": ["https://vibegamesstudio.com/", "Creator's public Claude Code Showcase"],
+      "evidence_level": "Real Product / Live Experiment + Creator Claim"
+    },
+    {
+      "title": "Ordewell makes the implementation plan an editable pre-execution artifact",
+      "summary": "Ordewell uses a read-only planner to expose tasks, dependencies, runners, models, reasoning modes, and execution modes before independent coding sessions begin. This moves human correction to a low-side-effect point, while its completion marker remains protocol acknowledgement rather than proof that the requested outcome is correct.",
+      "themes": ["coding-agents", "backend-architecture", "evaluation"],
+      "evidence": ["https://github.com/ordewell/ordewell"],
+      "evidence_level": "Open Source Project / Developer Experiment"
+    },
+    {
+      "title": "SuperDev extends coding-agent context from the repository into the live runtime",
+      "summary": "SuperDev lets coding agents inspect processes, ports, logs, debugger state, browser behavior, and network activity, then places runtime writes behind operation-bound approval tokens and local audit. The reported zombie-server failure shows why restart claims need PID and start-time evidence before an agent changes otherwise-correct code.",
+      "themes": ["agent-runtime", "ai-security", "coding-agents", "observability"],
+      "evidence": ["https://github.com/Xsxdot/super-dev"],
+      "evidence_level": "Open Source Project / Developer Experiment"
+    },
+    {
+      "title": "AI Guard converts recurring agent-code failures into deterministic CI gates",
+      "summary": "AI Guard encodes recurring empty-catch, floating-promise, unsafe-async, placeholder-secret, missing-auth, and dynamic-evaluation failures as ESLint, CLI, SARIF, and pull-request checks. Its reported shift toward lower false-positive rates and easier adoption makes guardrail noise and ongoing enablement part of reliability design.",
+      "themes": ["ai-security", "coding-agents", "evaluation"],
+      "evidence": ["https://github.com/YashJadhav21/eslint-plugin-ai-guard"],
+      "evidence_level": "Open Source Project / Reproducible Engineering Practice"
+    },
+    {
+      "title": "Bookery illustrates the human shift toward product and architecture work",
+      "summary": "Bookery is presented as a sustained open-source product in which the creator retains feature specification, architecture, coherence, and acceptance while delegating nearly all implementation to Claude Code. The code-authorship percentage remains a creator claim; the transferable signal is the redistribution of responsibility rather than removal of human work.",
+      "themes": ["coding-agents", "backend-architecture"],
+      "evidence": ["Bookery public GitHub repository", "Creator's public build notes"],
+      "evidence_level": "Real Open Source Product + Creator Claim"
+    },
+    {
+      "title": "TurnLens makes the agent turn a practical telemetry unit",
+      "summary": "TurnLens parses local Claude Code and Codex JSONL transcripts to attribute tokens, tool calls, model use, completion state, and API-equivalent cost to individual turns. Its disclosed sub-agent undercount, duplicate-message, cache-pricing, and subscription-billing limitations show why transcript semantics must accompany agent cost figures.",
+      "themes": ["observability", "evaluation", "coding-agents"],
+      "evidence": ["https://github.com/kelesmert/turnlens"],
+      "evidence_level": "Open Source Project / Developer Experiment"
+    },
+    {
+      "title": "Claude Tag turns a shared team channel into an agent workspace",
+      "summary": "Claude Tag places shared channel context, administrator-authorized tools, asynchronous thread work, steering, and follow-up in the same team conversation. This makes public organizational context—not a private copied prompt—the workspace boundary, while Anthropic's internal adoption claims remain first-party evidence.",
+      "themes": ["ai-platforms", "agent-runtime", "ai-security"],
+      "evidence": ["https://www.anthropic.com/news/introducing-claude-tag"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "CopilotKit Channels abstracts channel-native agent integration",
+      "summary": "CopilotKit Channels provides adapters and channel-native interaction primitives for bringing existing agents into team communication surfaces, including streaming, context, approval, and UI. Together with vendor-managed channel agents, it makes the channel-native agent a trackable product form rather than a one-off bot integration.",
+      "themes": ["ai-platforms", "agent-runtime", "ai-security"],
+      "evidence": ["https://docs.copilotkit.ai/reference/channels", "https://docs.copilotkit.ai/teams"],
+      "evidence_level": "Official Docs + Community Release Signal"
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Agent as Organization",
+      "summary": "Agents are assigned roles, schedules, bounded jobs, durable artifacts, handoffs, and independent gates inside a continuing production loop.",
+      "outlook": "Early but strong signal. Durable differentiation is more likely to come from policy, QA, and cross-run state than from persona count.",
+      "themes": ["agent-runtime", "backend-architecture", "evaluation"],
+      "examples": ["VibeGamesStudio"]
+    },
+    {
+      "title": "Human as Product/Architecture Layer",
+      "summary": "Humans retain problem selection, product scope, architecture, coherence, and acceptance while agents take a larger share of implementation and iteration.",
+      "outlook": "High-probability long-term pattern, especially for one-person teams with strong engineering judgment.",
+      "themes": ["coding-agents", "backend-architecture"],
+      "examples": ["Bookery"]
+    },
+    {
+      "title": "Plan as First-class Artifact",
+      "summary": "Task graphs, dependencies, models, and execution choices become visible and editable before code-changing sessions begin.",
+      "outlook": "Strong signal and a comparatively low-complexity way to reduce expensive rework on long-running tasks.",
+      "themes": ["coding-agents", "evaluation", "backend-architecture"],
+      "examples": ["Ordewell"]
+    },
+    {
+      "title": "Agent Sidecar Infrastructure",
+      "summary": "Runtime sensors, deterministic quality gates, and turn-level telemetry are emerging around coding agents to supply truth, constraints, and evidence that the model cannot safely self-attest.",
+      "outlook": "The strongest pattern to continue tracking because evidence, guardrails, and telemetry become more important as agent autonomy increases.",
+      "themes": ["agent-runtime", "ai-security", "evaluation", "observability"],
+      "examples": ["SuperDev", "AI Guard", "TurnLens"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Evidence-backed skill maturity",
+      "summary": "Assess skill maturity through real runs, repository spread, successful outcomes, human overrides, false-positive workflow triggers, known failure modes, and adoption cost. Observe this evidence first rather than expanding the registry schema immediately.",
+      "themes": ["evaluation", "observability"]
+    }
+  ],
+  "markdown_path": "radars/systems/2026/2026-08-07.md"
+}

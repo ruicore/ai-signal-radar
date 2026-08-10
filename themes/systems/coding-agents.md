@@ -8,7 +8,9 @@ Agentic coding systems that read, edit, test, review, and maintain software acro
 
 - 2026-06-15: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-15.md)
 - 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-29.md)
+- 2026-08-07: [AI Agent 生态与社区创造周报](../../radars/systems/2026/2026-08-07.md)
 
 ## Notable Recurring Signals
 
 - Coding agents are moving from local assistants toward governed workflows with review, security validation, model and tool control, and measurable cost-to-completion.
+- Human leverage is shifting from routine implementation toward problem framing, plan editing, architecture, product coherence, and acceptance.

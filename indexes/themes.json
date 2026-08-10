@@ -35,6 +35,12 @@
       "date": "2026-07-26",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-26.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "ai-platforms": [
@@ -73,6 +79,12 @@
       "date": "2026-07-26",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-26.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "ai-security": [
@@ -111,6 +123,12 @@
       "date": "2026-07-26",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-26.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "backend-architecture": [
@@ -137,6 +155,12 @@
       "date": "2026-07-06",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-06.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "coding-agents": [
@@ -175,6 +199,12 @@
       "date": "2026-07-26",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-26.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "computer-use": [
@@ -221,6 +251,12 @@
       "date": "2026-07-26",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-26.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "generated-commons": [
@@ -321,6 +357,12 @@
       "date": "2026-07-26",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-07-26.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-07",
+      "title": "AI Agent 生态与社区创造周报",
+      "markdown_path": "radars/systems/2026/2026-08-07.md"
     }
   ],
   "personal-software": [
