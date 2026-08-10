@@ -1,0 +1,107 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "systems",
+  "date": "2026-08-09",
+  "observation_window": {
+    "start": "2026-08-03",
+    "end": "2026-08-09"
+  },
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-security",
+    "backend-architecture",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Realtime AI becomes a continuously running stateful stream processor",
+      "summary": "GPT-Live separates a deadline-sensitive media fast path from asynchronous reasoning, tools, persistence, context compaction, and model migration. The durable architecture signal is to treat latency as multiple coordinated SLA budgets and use warm replacement plus cutover for stateful inference changes instead of blocking the live session.",
+      "themes": ["llm-infrastructure", "backend-architecture", "agent-runtime", "observability"],
+      "evidence": ["https://openai.com/index/continuous-voice-interaction-with-gpt-live/"],
+      "evidence_level": "Official / Production Adoption"
+    },
+    {
+      "title": "Agent policy advances from point-in-time authorization to temporal runtime verification",
+      "summary": "AWS Dogwood adds policies over action history, including prerequisites, windowed limits, accumulated value, and post-exposure restrictions. Production agent governance therefore needs a stateful policy control plane with trusted ordering, durable history, concurrency semantics, tenant isolation, auditability, and an atomic boundary between authorization and tool execution.",
+      "themes": ["agent-runtime", "ai-security", "backend-architecture"],
+      "evidence": [
+        "https://aws.amazon.com/blogs/opensource/introducing-dogwood-runtime-verification-for-ai-agents/",
+        "https://github.com/dogwood-policy/dogwood",
+        "https://blog.cloudflare.com/the-agent-access-model/"
+      ],
+      "evidence_level": "Official / Reproducible Engineering Practice"
+    },
+    {
+      "title": "The environment layer becomes shared infrastructure for agent training and evaluation",
+      "summary": "Microsoft Orchard extracts sandbox execution into a Kubernetes-native environment service shared by trajectory collection, supervised learning, reinforcement-learning rollout, evaluation, and real agent harnesses. The durable signal is that environment image, tools, policy, task snapshot, reward, and trajectory are part of an agent evaluation artifact, reducing train-eval-deploy mismatch.",
+      "themes": ["agent-runtime", "evaluation", "backend-architecture", "llm-infrastructure"],
+      "evidence": [
+        "https://www.microsoft.com/en-us/research/blog/orchard-an-open-framework-for-scalable-agentic-ai/",
+        "https://github.com/microsoft/Orchard"
+      ],
+      "evidence_level": "Official / Reproducible Engineering Practice"
+    },
+    {
+      "title": "LLM serving observability moves toward request-level cross-layer traces",
+      "summary": "TELLER correlates inference-engine operations, Python and C++ execution, CUDA runtime calls, GPU kernels, NCCL communication, and logs back to logical requests despite continuous batching and asynchronous launches. Its strongest production pattern is deterministic evidence construction and compression before learned root-cause interpretation, rather than asking a model to infer causes from raw traces.",
+      "themes": ["observability", "llm-infrastructure", "evaluation"],
+      "evidence": ["https://arxiv.org/pdf/2608.01975"],
+      "evidence_level": "Reproducible Engineering Practice / Demo"
+    },
+    {
+      "title": "LLMs enter systems optimization behind compiler-defined admission gates",
+      "summary": "AgentCompile lets an LLM propose optimization plans or kernels within compiler-defined contracts, then subjects every candidate to compilation, numerical correctness, benchmarking, policy, and safe fallback. The durable pattern is Generate, Verify, Measure, Admit: AI-generated systems components are most credible where strong correctness and performance oracles can automatically reject bad output.",
+      "themes": ["llm-infrastructure", "evaluation", "backend-architecture"],
+      "evidence": [
+        "https://arxiv.org/html/2606.07665v2",
+        "https://github.com/veneno1213822/AgentCompile"
+      ],
+      "evidence_level": "Reproducible Engineering Practice / Open Source Experiment"
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Explicit deterministic boundaries around probabilistic intelligence",
+      "summary": "The five signals independently place latency, behavior, environment, evidence, and admission boundaries outside model discretion and make their state and authority explicit.",
+      "outlook": "High-probability systems architecture direction that should persist across model and framework changes.",
+      "themes": ["agent-runtime", "ai-security", "backend-architecture", "evaluation", "llm-infrastructure", "observability"],
+      "examples": ["GPT-Live", "Dogwood", "Orchard", "TELLER", "AgentCompile"]
+    },
+    {
+      "title": "Generate, verify, measure, and admit",
+      "summary": "AI-generated or AI-selected system components are admitted only after deterministic correctness checks, performance measurement, policy evaluation, and a known-safe fallback.",
+      "outlook": "Likely to expand first in compiler, query-planning, scheduling, configuration, and policy domains with strong validation oracles.",
+      "themes": ["evaluation", "backend-architecture", "llm-infrastructure"],
+      "examples": ["AgentCompile"]
+    },
+    {
+      "title": "State becomes a first-class governance and evaluation input",
+      "summary": "Action history, environment versions, session state, task snapshots, and request-to-kernel mappings become durable inputs to authorization, training, evaluation, migration, and diagnosis.",
+      "outlook": "Agent platforms will increasingly need explicit state ownership, replay, recovery, consistency, and audit semantics rather than prompt-only controls.",
+      "themes": ["agent-runtime", "ai-security", "evaluation", "observability"],
+      "examples": ["Dogwood", "Orchard", "GPT-Live", "TELLER"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Stateful agent tool-policy experiment",
+      "summary": "Implement and replay approval, post-sensitive-access, per-task rate-limit, and concurrent-request traces in Dogwood; compare request-history and response-history semantics and document fail-open versus fail-closed behavior after event-store loss.",
+      "themes": ["agent-runtime", "ai-security", "evaluation"]
+    },
+    {
+      "title": "Temporal agent policy engineering note",
+      "summary": "Create a compact knowledge asset distinguishing point-in-time authorization, workflow, and temporal runtime verification, with an architecture diagram, failure-mode table, and reusable concurrency evaluation cases.",
+      "themes": ["ai-security", "backend-architecture"]
+    }
+  ],
+  "markdown_path": "radars/systems/2026/2026-08-09.md"
+}

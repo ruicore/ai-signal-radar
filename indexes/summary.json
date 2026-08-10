@@ -1,25 +1,25 @@
 {
-  "radar_count": 8,
+  "radar_count": 9,
   "radar_counts": {
     "creation": 1,
-    "systems": 7
+    "systems": 8
   },
-  "signal_count": 43,
-  "idea_count": 8,
-  "pattern_count": 9,
+  "signal_count": 48,
+  "idea_count": 10,
+  "pattern_count": 12,
   "theme_counts": {
-    "agent-runtime": 7,
+    "agent-runtime": 8,
     "ai-platforms": 7,
-    "ai-security": 7,
-    "backend-architecture": 5,
+    "ai-security": 8,
+    "backend-architecture": 6,
     "coding-agents": 7,
     "computer-use": 1,
-    "evaluation": 7,
+    "evaluation": 8,
     "generated-commons": 1,
     "generated-curriculum": 1,
-    "llm-infrastructure": 6,
+    "llm-infrastructure": 7,
     "multi-tenancy": 1,
-    "observability": 7,
+    "observability": 8,
     "personal-software": 1,
     "playable-self-expression": 1,
     "software-as-cultural-release": 1
