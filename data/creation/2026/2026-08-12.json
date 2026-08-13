@@ -1,0 +1,127 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "creation",
+  "date": "2026-08-12",
+  "observation_window": {
+    "start": "2026-08-06",
+    "end": "2026-08-12"
+  },
+  "title": "AI Native Creation Radar",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "domain-native-ai-interface",
+    "high-level-authoring-low-level-rendering",
+    "human-role-bottleneck-removal",
+    "temporary-event-specific-software"
+  ],
+  "signals": [
+    {
+      "title": "Sawdust",
+      "summary": "A woodworking design environment models stock, tools, cuts, kerf, joinery, assembly, and waste, then can produce manufacturable plans and files rather than only a rendered CAD-like artifact.",
+      "themes": ["domain-native-ai-interface"],
+      "evidence": ["https://sawdust.diy/", "https://news.ycombinator.com/item?id=49234277"],
+      "evidence_level": "Real Product / Live Experiment",
+      "domain": "Product / Physical Craft / Hardware",
+      "creator": "Taylor Finley",
+      "what_was_created": "A woodcraft design and simulation tool that can export STEP, 3D-print files, material lists, cut plans, build guides, and AR dimensions.",
+      "what_ai_changed": "AI lowers the cost of translating a maker's intent into material-aware design, cut-list, and manufacturing procedure.",
+      "human_behavior_change": "A maker can operate through woodworking concepts instead of first learning generic CAD abstractions.",
+      "transferable_idea": "Model domain primitives rather than software primitives when the goal is domain-native creation."
+    },
+    {
+      "title": "Trebella",
+      "summary": "A music-practice product analyzes uploaded sheet music and supports practice sessions, warm-ups, and microphone-based feedback while positioning itself as complementary to teachers.",
+      "themes": ["domain-native-ai-interface"],
+      "evidence": ["https://www.trebel.la/", "https://news.ycombinator.com/item?id=49233423"],
+      "evidence_level": "Live Experiment / Creator Claim",
+      "domain": "Education / Music",
+      "creator": "Trebella independent creator with music teachers",
+      "what_was_created": "A practice loop around scores, preparation time, performance observation, and the next attempt for classical instruments.",
+      "what_ai_changed": "AI could increase the frequency of individualized practice feedback; fine-grained performance feedback remains an acknowledged product blocker.",
+      "human_behavior_change": "Independent daily practice can be observed and structured between human lessons.",
+      "transferable_idea": "For practiced skills, design observation, feedback, and the next attempt before designing more course content."
+    },
+    {
+      "title": "Structo",
+      "summary": "A writing tool makes author-created idea blocks its primary editing object, letting an LLM render rearranged structures into coherent prose and surface logical gaps.",
+      "themes": ["high-level-authoring-low-level-rendering"],
+      "evidence": ["https://news.ycombinator.com/item?id=49236569"],
+      "evidence_level": "Live Experiment / Creator Claim",
+      "domain": "Writing / Creator Tool",
+      "creator": "Redbeard Lab",
+      "what_was_created": "An accessible idea-block editor that can reorganize the structure of a piece before rendering surface language.",
+      "what_ai_changed": "LLMs lower the cost of converting semantic structure into connected prose after each structural revision.",
+      "human_behavior_change": "Writers can spend more attention arranging claims, evidence, and narrative relationships than repairing every sentence transition.",
+      "transferable_idea": "When low-level expression is cheap, move the primary control surface to the next useful abstraction layer."
+    },
+    {
+      "title": "TableForge",
+      "summary": "An AI Dungeon Master product combines persistent narrative and world state with deterministic D&D 5e rules, enabling real-time or asynchronous multiplayer campaigns.",
+      "themes": ["human-role-bottleneck-removal"],
+      "evidence": ["https://tableforge.gg/", "https://tableforge.gg/about"],
+      "evidence_level": "Real Product / Creator Claim",
+      "domain": "Game / Social",
+      "creator": "Independent solo developer",
+      "what_was_created": "A persistent social D&D experience where all friends can be players while software facilitates narrative, state, and some coordination.",
+      "what_ai_changed": "AI and deterministic software can absorb parts of the compound Dungeon Master role at software-like marginal cost.",
+      "human_behavior_change": "Distributed friends can sustain a shared campaign without requiring one participant to permanently give up playing to facilitate it.",
+      "transferable_idea": "Look for group activities that require someone to organize, host, record, or arbitrate instead of participating."
+    },
+    {
+      "title": "Total Solar Eclipse 3D Visualizer",
+      "summary": "Google AI presented an AI Studio-built interactive 3D visualizer for the 2026-08-12 total solar eclipse; it follows the lunar shadow and simulates local skies for a single event.",
+      "themes": ["temporary-event-specific-software"],
+      "evidence": ["https://x.com/GoogleAI/status/2087279317172777169", "https://science.nasa.gov/eclipses/future-eclipses/total-solar-eclipse-on-august-12-2026/"],
+      "evidence_level": "Live Experiment / Concept Demo",
+      "domain": "Science / Education / Temporary Software",
+      "creator": "Google AI / Google AI Studio",
+      "what_was_created": "A one-event interactive visualization for an eclipse whose user demand rapidly expires after the event.",
+      "what_ai_changed": "AI lowers the implementation cost enough that rich interactive software can economically share an event's short lifecycle.",
+      "human_behavior_change": "A special event can prompt creation of a dedicated interactive experience instead of only a map, article, or generic app.",
+      "transferable_idea": "Some software should optimize an important moment and then complete its mission rather than pursue retention."
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Domain-native AI Interface",
+      "summary": "Users directly manipulate domain objects rather than prompts or generic software abstractions.",
+      "outlook": "Strong: as model capability commoditizes, domain grammar can become the durable interface differentiation.",
+      "themes": ["domain-native-ai-interface"],
+      "examples": ["Sawdust", "Trebella"]
+    },
+    {
+      "title": "High-level Authoring / Low-level Rendering",
+      "summary": "Humans control ideas, structure, and intent while models render the lower-level expression.",
+      "outlook": "Strong: the pattern can spread from writing to design, video, software, and knowledge expression.",
+      "themes": ["high-level-authoring-low-level-rendering"],
+      "examples": ["Structo"]
+    },
+    {
+      "title": "Human Role Bottleneck Removal",
+      "summary": "AI makes a necessary group role less dependent on one participant sacrificing their own participation.",
+      "outlook": "Medium-high: facilitator, coordinator, and referee roles have potential, while social quality remains the limiting factor.",
+      "themes": ["human-role-bottleneck-removal"],
+      "examples": ["TableForge"]
+    },
+    {
+      "title": "Temporary / Event-specific Software",
+      "summary": "Software can share the lifecycle of a single event rather than needing a long-lived SaaS model.",
+      "outlook": "Likely to recur as a digital medium even when it does not create conventional recurring-product economics.",
+      "themes": ["temporary-event-specific-software"],
+      "examples": ["Total Solar Eclipse 3D Visualizer"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Domain Procedure as a Medium",
+      "summary": "A modifiable, explainable, simulatable, executable, and recombinable domain procedure could sit between static documentation and software; record the direction without building a general platform now.",
+      "themes": ["domain-native-ai-interface"]
+    }
+  ],
+  "markdown_path": "radars/creation/2026/2026-08-12.md"
+}

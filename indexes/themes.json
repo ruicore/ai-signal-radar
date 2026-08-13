@@ -233,6 +233,14 @@
       "markdown_path": "radars/systems/2026/2026-06-29.md"
     }
   ],
+  "domain-native-ai-interface": [
+    {
+      "radar_type": "creation",
+      "date": "2026-08-12",
+      "title": "AI Native Creation Radar",
+      "markdown_path": "radars/creation/2026/2026-08-12.md"
+    }
+  ],
   "evaluation": [
     {
       "radar_type": "systems",
@@ -297,6 +305,22 @@
       "date": "2026-08-05",
       "title": "AI Native Creation Radar",
       "markdown_path": "radars/creation/2026/2026-08-05.md"
+    }
+  ],
+  "high-level-authoring-low-level-rendering": [
+    {
+      "radar_type": "creation",
+      "date": "2026-08-12",
+      "title": "AI Native Creation Radar",
+      "markdown_path": "radars/creation/2026/2026-08-12.md"
+    }
+  ],
+  "human-role-bottleneck-removal": [
+    {
+      "radar_type": "creation",
+      "date": "2026-08-12",
+      "title": "AI Native Creation Radar",
+      "markdown_path": "radars/creation/2026/2026-08-12.md"
     }
   ],
   "llm-infrastructure": [
@@ -423,6 +447,14 @@
       "date": "2026-08-05",
       "title": "AI Native Creation Radar",
       "markdown_path": "radars/creation/2026/2026-08-05.md"
+    }
+  ],
+  "temporary-event-specific-software": [
+    {
+      "radar_type": "creation",
+      "date": "2026-08-12",
+      "title": "AI Native Creation Radar",
+      "markdown_path": "radars/creation/2026/2026-08-12.md"
     }
   ]
 }

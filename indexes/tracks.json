@@ -13,6 +13,19 @@
       ],
       "markdown_path": "radars/creation/2026/2026-08-05.md",
       "data_path": "data/creation/2026/2026-08-05.json"
+    },
+    {
+      "radar_type": "creation",
+      "date": "2026-08-12",
+      "title": "AI Native Creation Radar",
+      "themes": [
+        "domain-native-ai-interface",
+        "high-level-authoring-low-level-rendering",
+        "human-role-bottleneck-removal",
+        "temporary-event-specific-software"
+      ],
+      "markdown_path": "radars/creation/2026/2026-08-12.md",
+      "data_path": "data/creation/2026/2026-08-12.json"
     }
   ],
   "systems": [
