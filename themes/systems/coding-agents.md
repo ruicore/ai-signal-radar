@@ -14,3 +14,5 @@ Agentic coding systems that read, edit, test, review, and maintain software acro
 
 - Coding agents are moving from local assistants toward governed workflows with review, security validation, model and tool control, and measurable cost-to-completion.
 - Human leverage is shifting from routine implementation toward problem framing, plan editing, architecture, product coherence, and acceptance.
+- Tool-interface architecture changes repeated-run consistency, exploration,
+  interaction cost, and recovery behavior even when underlying capability is similar.

@@ -14,3 +14,5 @@ Infrastructure for LLM-powered systems, including inference substrate, agent exe
 
 - LLM infrastructure for agents is broadening from inference to execution substrate, isolation, policy, tool access, workload evaluation, and cost controls.
 - Realtime inference, shared environment services, request-to-kernel tracing, and compiler-gated optimization are emerging as distinct infrastructure layers around model serving.
+- Inference routers increasingly trade off queue load, prefix and KV locality,
+  session affinity, tenant namespace, topology, latency class, and cost.

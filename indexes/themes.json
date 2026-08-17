@@ -47,6 +47,12 @@
       "date": "2026-08-09",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-09.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-16",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-16.md"
     }
   ],
   "ai-platforms": [
@@ -223,6 +229,12 @@
       "date": "2026-08-07",
       "title": "AI Agent 生态与社区创造周报",
       "markdown_path": "radars/systems/2026/2026-08-07.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-16",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-16.md"
     }
   ],
   "computer-use": [
@@ -289,6 +301,12 @@
       "date": "2026-08-09",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-09.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-16",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-16.md"
     }
   ],
   "generated-commons": [
@@ -365,6 +383,20 @@
       "date": "2026-08-09",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-09.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-16",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-16.md"
+    }
+  ],
+  "multi-agent-coordination": [
+    {
+      "radar_type": "systems",
+      "date": "2026-08-16",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-16.md"
     }
   ],
   "multi-tenancy": [
@@ -423,6 +455,12 @@
       "date": "2026-08-09",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-09.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-16",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-16.md"
     }
   ],
   "personal-software": [

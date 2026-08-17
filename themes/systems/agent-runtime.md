@@ -16,3 +16,6 @@ Runtime substrate for agents, including persistent workspaces, scheduling, execu
 - Agent runtime is repeatedly framed as production backend infrastructure with identity, scoped execution, lifecycle management, tool boundaries, and auditability rather than a single chat session.
 - Coding agents increasingly need explicit plan, process, runtime, handoff, QA, stop, and evidence semantics around model execution.
 - Runtime state is expanding beyond session memory to include action history, environment versions, warm handoff state, and deterministic admission evidence.
+- Local and cloud sessions need correlatable provenance, lifecycle semantics, and
+  governance boundaries; multi-agent workflows require explicit resource
+  ownership rather than role prompts alone.

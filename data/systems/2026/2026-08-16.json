@@ -1,0 +1,97 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "systems",
+  "date": "2026-08-16",
+  "observation_window": {
+    "start": "2026-08-10",
+    "end": "2026-08-16"
+  },
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "multi-agent-coordination",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "KV cache becomes distributed routing state",
+      "summary": "NVIDIA Dynamo v1.4.0 and Ray 2.57.0 independently add experimental cache-aware routing that considers prefix locality alongside load. Inference routing is becoming scheduling over compute, queues, cache, session state, tenancy, and topology rather than ordinary HTTP balancing.",
+      "themes": ["llm-infrastructure", "observability"],
+      "evidence": ["https://github.com/ai-dynamo/dynamo/releases/tag/v1.4.0", "https://github.com/ray-project/ray/releases"],
+      "evidence_level": "Reproducible Engineering Practice"
+    },
+    {
+      "title": "Tool architecture is agent reliability architecture",
+      "summary": "A study across 11,700 coding-agent trajectories finds that equivalent underlying capabilities exposed through different tool interfaces materially change repeated-run consistency, repository exploration, interaction steps, and token use. Model evaluation must include harness, tool architecture, context policy, and environment.",
+      "themes": ["coding-agents", "evaluation"],
+      "evidence": ["https://arxiv.org/html/2608.11386v1"],
+      "evidence_level": "Reproducible Engineering Practice"
+    },
+    {
+      "title": "Inference latency becomes an execution-class policy",
+      "summary": "OpenAI's limited Ultrafast preview for the same GPT-5.6 Sol model separates serving latency from model selection. Future policy routing may select model, reasoning effort, latency class, accelerator, budget, capacity, deadline, and fallback together; end-to-end time-to-useful-action remains the relevant measure.",
+      "themes": ["llm-infrastructure", "evaluation"],
+      "evidence": ["https://openai.com/index/previewing-ultrafast/"],
+      "evidence_level": "Official / Limited Preview"
+    },
+    {
+      "title": "Endpoint-local agent execution enters central governance",
+      "summary": "Anthropic's Enterprise Compliance API can centrally read local Cowork and Claude Code session transcripts and introduces workspace identity in responses. Local CLI, desktop, and cloud agents should share correlatable session provenance and policy/audit boundaries without confusing transcripts for complete operational observability.",
+      "themes": ["agent-runtime", "observability"],
+      "evidence": ["https://docs.anthropic.com/en/release-notes/api"],
+      "evidence_level": "Official / Production Adoption (Beta)"
+    },
+    {
+      "title": "Multi-agent coordination needs mechanisms, not role prompts",
+      "summary": "Anthropic's experiments show that role prompts and CEO hierarchy prompts do not by themselves resolve shared-codebase conflicts; homogeneous agents can herd, compete for resources, and converge prematurely. Production coordination needs explicit ownership, leases, quotas, backpressure, conflict arbitration, and human recourse.",
+      "themes": ["multi-agent-coordination", "agent-runtime", "evaluation"],
+      "evidence": ["https://www.anthropic.com/research/multiagent-systems"],
+      "evidence_level": "Official / Experimental Research"
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Control planes consume model-external state",
+      "summary": "Inference routers, agent harnesses, governance systems, and multi-agent coordinators increasingly depend on cache locality, tool interfaces, session provenance, interaction history, and resource ownership.",
+      "outlook": "High probability: these deterministic control concerns grow as models become more capable, long-running, and parallel.",
+      "themes": ["agent-runtime", "llm-infrastructure", "multi-agent-coordination", "observability"],
+      "examples": ["Dynamo", "Ray", "Anthropic Compliance API", "Anthropic multi-agent experiments"]
+    },
+    {
+      "title": "Agent harness engineering becomes a measured discipline",
+      "summary": "Tool-interface design, repeated-run consistency, interaction error, exploration, cost, and end-to-end latency are first-class evaluation variables rather than implementation details.",
+      "outlook": "High probability: reporting only a model score will be insufficient for production agent systems.",
+      "themes": ["coding-agents", "evaluation"],
+      "examples": ["Tool Architecture Study", "Ultrafast Preview"]
+    },
+    {
+      "title": "Production workflows preserve bounded partial progress",
+      "summary": "Reliability signals around deadlines, cancellation, worker recovery, cost limits, artifact persistence, and idempotent publication emphasize lifecycle design over simply increasing autonomy.",
+      "outlook": "Likely to become a baseline requirement for long-running, multi-target agent workflows.",
+      "themes": ["agent-runtime", "multi-agent-coordination", "observability"],
+      "examples": ["Codex Security releases"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "KV-aware routing simulator",
+      "summary": "Build a small no-GPU simulation that compares round-robin, least-queue, and prefix-aware routing across low reuse, hot-prefix, stale-metadata, and tenant-isolation scenarios; record hit ratio, redundant prefill, load variance, estimated P95 TTFT, and isolation violations.",
+      "themes": ["llm-infrastructure", "evaluation"]
+    },
+    {
+      "title": "Agent harness interface evaluation note",
+      "summary": "Define a compact repeated-run evaluation for tool granularity and exposure that records task success, consistency, interaction errors, tool calls, token use, relevant-file recall and precision, invalid actions, and recovery attempts.",
+      "themes": ["coding-agents", "evaluation"]
+    }
+  ],
+  "markdown_path": "radars/systems/2026/2026-08-16.md"
+}
