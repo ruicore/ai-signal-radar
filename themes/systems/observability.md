@@ -10,6 +10,7 @@ Observability for AI and agent systems, including traces, tool-call metrics, lat
 - 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-29.md)
 - 2026-08-07: [AI Agent 生态与社区创造周报](../../radars/systems/2026/2026-08-07.md)
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
+- 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
 
 ## Notable Recurring Signals
 
@@ -18,3 +19,5 @@ Observability for AI and agent systems, including traces, tool-call metrics, lat
 - LLM serving traces need to correlate logical requests and scheduler batches with host launches, CUDA kernels, collectives, and logs before learned diagnosis is applied.
 - Routing decisions and local-agent session provenance need explicit, correlated
   artifacts; a compliance transcript alone is not a complete runtime trace.
+- Telemetry policy, content capture, frozen artifacts, and delayed outcome joins
+  are governance and evidence-lifecycle concerns, not merely logging settings.

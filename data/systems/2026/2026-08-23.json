@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "systems",
+  "date": "2026-08-23",
+  "observation_window": {
+    "start": "2026-08-17",
+    "end": "2026-08-23"
+  },
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "coding-agents",
+    "evaluation",
+    "llm-infrastructure",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "Agent harness becomes an independent runtime and training boundary",
+      "summary": "OpenAI's open agent harness framing and Microsoft Agent Lightning's harnessed agentic RL both treat context construction, tools, policies, state, approvals, recovery, and orchestration as execution semantics outside the model. Agent reproducibility and training provenance therefore require versioning the model together with harness, context policy, tool contract, sandbox policy, and environment.",
+      "themes": ["agent-runtime", "coding-agents", "evaluation", "observability"],
+      "evidence": ["https://developers.openai.com/blog/codex-as-a-platform", "https://arxiv.org/html/2608.17528v1"],
+      "evidence_level": "Reproducible Engineering Practice"
+    },
+    {
+      "title": "Agents move to the build plane while production runs deterministic artifacts",
+      "summary": "AWS's ADOP reference architecture uses agents to generate ETL, quality checks, semantic definitions, policies, and DAGs during development, then promotes reviewed and validated static artifacts through CI/CD. This establishes a practical boundary: use probabilistic generation where artifacts can be checked, while keeping production execution deterministic when runtime semantic judgment is unnecessary.",
+      "themes": ["agent-runtime", "llm-infrastructure", "observability"],
+      "evidence": ["https://aws.amazon.com/blogs/machine-learning/agentic-data-operations-platform-adop-data-engineering-into-hours/"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "Endpoint agent governance becomes a centrally managed policy plane",
+      "summary": "GitHub Copilot for JetBrains adds enterprise-managed plugin sources, MCP allow and deny lists, OpenTelemetry configuration, content-capture policy, and restrictions on approval bypass or autopilot modes. Local agent execution increasingly needs centrally enforced capability, telemetry, and approval policy with correlatable endpoint provenance.",
+      "themes": ["agent-runtime", "coding-agents", "observability"],
+      "evidence": ["https://github.blog/changelog/2026-08-18-enterprise-managed-settings-in-github-copilot-for-jetbrains/"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "Power becomes a first-class AI scheduler resource",
+      "summary": "NVIDIA's DSX MaxLPS Dynamic Power Software models utility, resource-group, rack, node, and GPU power topology to reallocate unused headroom under a fixed site budget. The durable architecture signal is that compute scheduling is expanding from accelerators and queues to power, thermal, cooling, facility events, and policy constraints; vendor performance claims remain workload-specific.",
+      "themes": ["llm-infrastructure", "observability"],
+      "evidence": ["https://developer.nvidia.com/blog/maximizing-ai-factory-performance-per-watt-with-nvidia-dsx-maxlps/"],
+      "evidence_level": "Official / Developer Preview"
+    },
+    {
+      "title": "Evaluation shifts toward temporally isolated, outcome-grounded evidence",
+      "summary": "Historical backtesting for scientific question discovery freezes a system's allowed historical corpus and output, then joins later real-world literature outcomes. It also shows that agreement among model judges can exceed their agreement with expert annotations, reinforcing the need for frozen artifacts, cutoff dates, provenance, delayed labels, and outcome-based re-adjudication in long-horizon agent evaluation.",
+      "themes": ["evaluation", "observability"],
+      "evidence": ["https://arxiv.org/abs/2608.16795"],
+      "evidence_level": "Research Paper"
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Probability is being enclosed by deterministic system boundaries",
+      "summary": "The report's harness, build-artifact, endpoint-governance, power-scheduling, and evaluation signals all place model-driven behavior inside explicit runtime, policy, resource, validation, and evidence boundaries.",
+      "outlook": "High probability: systems that use increasingly capable models will need more—not fewer—versioned execution semantics, enforceable policies, resource constraints, and replayable evidence.",
+      "themes": ["agent-runtime", "evaluation", "llm-infrastructure", "observability"],
+      "examples": ["Codex agent harness", "Agent Lightning", "AWS ADOP", "GitHub Copilot managed settings", "NVIDIA DSX MaxLPS", "Historical Backtesting"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Harness rollout provenance simulator",
+      "summary": "Build a small simulator that compares sample-level and rollout-level reward aggregation, demonstrates context re-tokenization drift, deduplicates a retried model request, and replays a minimal event log keyed by rollout_id.",
+      "themes": ["agent-runtime", "evaluation", "observability"]
+    },
+    {
+      "title": "Probabilistic build-plane promotion template",
+      "summary": "Define a reusable generate, validate, review, freeze, and deploy workflow for model-produced artifacts, including static checks, policy checks, test evidence, artifact provenance, and rollback boundaries.",
+      "themes": ["agent-runtime", "llm-infrastructure", "observability"]
+    }
+  ],
+  "markdown_path": "radars/systems/2026/2026-08-23.md"
+}

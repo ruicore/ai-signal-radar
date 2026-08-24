@@ -11,6 +11,7 @@
 - 2026-08-07 [systems]: [AI Agent 生态与社区创造周报](../radars/systems/2026/2026-08-07.md)
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
+- 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
 
 ## ai-platforms
 
@@ -52,6 +53,7 @@
 - 2026-07-26 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-07-26.md)
 - 2026-08-07 [systems]: [AI Agent 生态与社区创造周报](../radars/systems/2026/2026-08-07.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
+- 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
 
 ## computer-use
 
@@ -72,6 +74,7 @@
 - 2026-08-07 [systems]: [AI Agent 生态与社区创造周报](../radars/systems/2026/2026-08-07.md)
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
+- 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
 
 ## generated-commons
 
@@ -99,6 +102,7 @@
 - 2026-07-26 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-07-26.md)
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
+- 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
 
 ## multi-agent-coordination
 
@@ -119,6 +123,7 @@
 - 2026-08-07 [systems]: [AI Agent 生态与社区创造周报](../radars/systems/2026/2026-08-07.md)
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
+- 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
 
 ## personal-software
 

@@ -9,6 +9,7 @@ Agentic coding systems that read, edit, test, review, and maintain software acro
 - 2026-06-15: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-15.md)
 - 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-29.md)
 - 2026-08-07: [AI Agent 生态与社区创造周报](../../radars/systems/2026/2026-08-07.md)
+- 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
 
 ## Notable Recurring Signals
 
@@ -16,3 +17,5 @@ Agentic coding systems that read, edit, test, review, and maintain software acro
 - Human leverage is shifting from routine implementation toward problem framing, plan editing, architecture, product coherence, and acceptance.
 - Tool-interface architecture changes repeated-run consistency, exploration,
   interaction cost, and recovery behavior even when underlying capability is similar.
+- Endpoint coding agents increasingly require centrally managed plugin, MCP,
+  approval, and telemetry policies instead of relying on local configuration.
