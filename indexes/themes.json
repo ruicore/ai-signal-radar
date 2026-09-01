@@ -59,6 +59,20 @@
       "date": "2026-08-23",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-23.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-30",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-30.md"
+    }
+  ],
+  "ai-finops": [
+    {
+      "radar_type": "systems",
+      "date": "2026-08-30",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-30.md"
     }
   ],
   "ai-platforms": [
@@ -413,6 +427,12 @@
       "date": "2026-08-23",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-23.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-30",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-30.md"
     }
   ],
   "multi-agent-coordination": [
@@ -491,6 +511,12 @@
       "date": "2026-08-23",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-23.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-08-30",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-30.md"
     }
   ],
   "personal-software": [
@@ -499,6 +525,14 @@
       "date": "2026-08-05",
       "title": "AI Native Creation Radar",
       "markdown_path": "radars/creation/2026/2026-08-05.md"
+    }
+  ],
+  "physical-ai": [
+    {
+      "radar_type": "systems",
+      "date": "2026-08-30",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-08-30.md"
     }
   ],
   "playable-self-expression": [

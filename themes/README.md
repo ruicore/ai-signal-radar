@@ -12,6 +12,11 @@
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
 - 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
+- 2026-08-30 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-30.md)
+
+## ai-finops
+
+- 2026-08-30 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-30.md)
 
 ## ai-platforms
 
@@ -103,6 +108,7 @@
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
 - 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
+- 2026-08-30 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-30.md)
 
 ## multi-agent-coordination
 
@@ -124,10 +130,15 @@
 - 2026-08-09 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-09.md)
 - 2026-08-16 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-16.md)
 - 2026-08-23 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-23.md)
+- 2026-08-30 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-30.md)
 
 ## personal-software
 
 - 2026-08-05 [creation]: [AI Native Creation Radar](../radars/creation/2026/2026-08-05.md)
+
+## physical-ai
+
+- 2026-08-30 [systems]: [AI Systems Engineering 技术雷达（高信号版）](../radars/systems/2026/2026-08-30.md)
 
 ## playable-self-expression
 

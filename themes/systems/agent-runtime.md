@@ -11,6 +11,7 @@ Runtime substrate for agents, including persistent workspaces, scheduling, execu
 - 2026-08-07: [AI Agent 生态与社区创造周报](../../radars/systems/2026/2026-08-07.md)
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
 - 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
+- 2026-08-30: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-30.md)
 
 ## Notable Recurring Signals
 
@@ -22,3 +23,5 @@ Runtime substrate for agents, including persistent workspaces, scheduling, execu
   ownership rather than role prompts alone.
 - Agent harnesses are becoming versioned execution boundaries that define context,
   tool, policy, state, approval, recovery, and orchestration semantics.
+- Local-first execution and physical tools require explicit cloud escalation,
+  consent, safety, cancellation, recovery, and cross-boundary provenance.

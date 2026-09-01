@@ -1,0 +1,75 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "systems",
+  "date": "2026-08-30",
+  "observation_window": {
+    "start": "2026-08-23",
+    "end": "2026-08-30"
+  },
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-finops",
+    "llm-infrastructure",
+    "observability",
+    "physical-ai"
+  ],
+  "signals": [
+    {
+      "title": "Inference accelerators enter model-system co-design",
+      "summary": "OpenAI's Jalapeño results frame inference performance as a joint property of model workload, compiler and kernel strategy, accelerator architecture, memory and interconnect, and serving policy. Capacity planning must therefore measure model-specific throughput, TTFT, TPOT, power, KV-cache fit, porting cost, and a fallback path rather than relying on peak hardware specifications alone.",
+      "themes": ["llm-infrastructure", "observability"],
+      "evidence": ["https://openai.com/index/jalapeno-first-results/", "https://openai.com/index/the-full-stack-behind-abundant-intelligence/"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "Physical agent control needs a standard plus a safety boundary",
+      "summary": "Anthropic's Model Hardware Standard research preview proposes a common interface for discovering, reading, controlling, and composing laboratory and manufacturing equipment. Devices add state, timing, calibration, actuator limits, sensor noise, physical safety, and recovery semantics, so a driver or safety supervisor—not the agent—must retain the final authority over real-world actions.",
+      "themes": ["agent-runtime", "physical-ai", "observability"],
+      "evidence": ["https://www.anthropic.com/news/model-hardware-standard-research-preview"],
+      "evidence_level": "Official / Early Partner Trial"
+    },
+    {
+      "title": "Local-first agents require explicit cloud escalation policy",
+      "summary": "Perplexity's Portable Computer uses local execution first and asks for permission before using cloud capability. The durable design signal is a Local Data Plane plus explicit Cloud Escalation: routing must account for data sensitivity, local capability, user consent, network state, cloud availability, fallback behavior, and continuity of state and audit evidence across locations.",
+      "themes": ["agent-runtime", "observability"],
+      "evidence": ["https://www.tomsguide.com/ai/perplexitys-new-local-first-ai-runs-on-your-pc-and-asks-before-using-the-cloud"],
+      "evidence_level": "Community / Product Signal"
+    },
+    {
+      "title": "AI FinOps becomes runtime policy instead of month-end reporting",
+      "summary": "Google's Gemini Enterprise budget controls signal that agent costs need online control at task and run granularity. A cost policy plane should estimate and enforce budget before and during execution, attribute model, tool, environment, storage, and review cost afterward, and coordinate model routing, tool budgets, retry limits, agent depth, and approval thresholds.",
+      "themes": ["ai-finops", "llm-infrastructure", "observability"],
+      "evidence": ["https://www.itpro.com/technology/artificial-intelligence/google-targets-ai-cost-efficiency-with-new-finops-features-for-gemini-enterprise"],
+      "evidence_level": "Community / Product Reporting"
+    }
+  ],
+  "patterns": [
+    {
+      "title": "AI execution expands into governed operational boundaries",
+      "summary": "Specialized inference hardware, physical devices, local-first routing, and FinOps all shift AI systems from a simple model-service abstraction toward explicit capability, hardware, data, network, cost, and safety boundaries.",
+      "outlook": "High probability: mature AI runtimes will enforce and trace these boundaries before real-world side effects, cloud escalation, or uncontrolled cost can occur.",
+      "themes": ["agent-runtime", "ai-finops", "llm-infrastructure", "observability", "physical-ai"],
+      "examples": ["OpenAI Jalapeño", "Anthropic Model Hardware Standard", "Perplexity Portable Computer", "Gemini Enterprise FinOps"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Virtual physical-tool safety harness",
+      "summary": "Create simulated microscope, liquid-handler, and robot-arm adapters behind a safety supervisor to test capability discovery, calibration gates, irreversible-action approval, cancellation, recovery, and replayable experiment provenance.",
+      "themes": ["agent-runtime", "observability", "physical-ai"]
+    },
+    {
+      "title": "Runtime AI cost-policy model",
+      "summary": "Define a per-task policy that estimates and enforces model, tool, environment, storage, and review budgets; exercise model downgrade, retry caps, escalation approval, and cost-per-successful-outcome metrics.",
+      "themes": ["ai-finops", "llm-infrastructure", "observability"]
+    }
+  ],
+  "markdown_path": "radars/systems/2026/2026-08-30.md"
+}

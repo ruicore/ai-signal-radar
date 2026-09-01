@@ -1,14 +1,15 @@
 {
-  "radar_count": 12,
+  "radar_count": 13,
   "radar_counts": {
     "creation": 2,
-    "systems": 10
+    "systems": 11
   },
-  "signal_count": 63,
-  "idea_count": 15,
-  "pattern_count": 20,
+  "signal_count": 67,
+  "idea_count": 17,
+  "pattern_count": 21,
   "theme_counts": {
-    "agent-runtime": 10,
+    "agent-runtime": 11,
+    "ai-finops": 1,
     "ai-platforms": 7,
     "ai-security": 8,
     "backend-architecture": 6,
@@ -20,11 +21,12 @@
     "generated-curriculum": 1,
     "high-level-authoring-low-level-rendering": 1,
     "human-role-bottleneck-removal": 1,
-    "llm-infrastructure": 9,
+    "llm-infrastructure": 10,
     "multi-agent-coordination": 1,
     "multi-tenancy": 1,
-    "observability": 10,
+    "observability": 11,
     "personal-software": 1,
+    "physical-ai": 1,
     "playable-self-expression": 1,
     "software-as-cultural-release": 1,
     "temporary-event-specific-software": 1

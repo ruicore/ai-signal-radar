@@ -10,6 +10,7 @@ Infrastructure for LLM-powered systems, including inference substrate, agent exe
 - 2026-06-29: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-06-29.md)
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
 - 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
+- 2026-08-30: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-30.md)
 
 ## Notable Recurring Signals
 
@@ -20,3 +21,5 @@ Infrastructure for LLM-powered systems, including inference substrate, agent exe
 - Schedulers are beginning to consume power, thermal, cooling, and facility events
   alongside compute and queue state; static production artifacts can also keep
   model calls out of deterministic runtime paths.
+- Hardware selection increasingly depends on model-specific compiler, kernel,
+  memory, interconnect, serving, power, and portability trade-offs.
