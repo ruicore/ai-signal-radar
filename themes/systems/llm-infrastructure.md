@@ -11,6 +11,7 @@ Infrastructure for LLM-powered systems, including inference substrate, agent exe
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
 - 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
 - 2026-08-30: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-30.md)
+- 2026-09-13: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-09-13.md)
 
 ## Notable Recurring Signals
 
@@ -23,3 +24,6 @@ Infrastructure for LLM-powered systems, including inference substrate, agent exe
   model calls out of deterministic runtime paths.
 - Hardware selection increasingly depends on model-specific compiler, kernel,
   memory, interconnect, serving, power, and portability trade-offs.
+- Inference placement is becoming a joint cache-locality, queueing, remote-data,
+  tenancy, and routing-overhead optimization; typed GPU abstractions may push
+  safety invariants closer to kernel execution.

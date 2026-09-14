@@ -11,6 +11,7 @@ Evaluation methods for AI systems, especially task-level, workload-level, and op
 - 2026-08-07: [AI Agent 生态与社区创造周报](../../radars/systems/2026/2026-08-07.md)
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
 - 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
+- 2026-09-13: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-09-13.md)
 
 ## Notable Recurring Signals
 
@@ -19,3 +20,5 @@ Evaluation methods for AI systems, especially task-level, workload-level, and op
 - Agent evaluation artifacts increasingly need environment images, harness and tool versions, task snapshots, policy, rewards, trajectories, correctness checks, and performance gates.
 - Long-horizon evaluation needs frozen outputs, temporal corpus boundaries, and
   later outcome joins; agreement between model judges alone is not ground truth.
+- Agent CI increasingly combines response, tool, trajectory, deterministic
+  side-effect, security, and outcome checks before promotion.

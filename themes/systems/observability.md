@@ -12,6 +12,7 @@ Observability for AI and agent systems, including traces, tool-call metrics, lat
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
 - 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
 - 2026-08-30: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-30.md)
+- 2026-09-13: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-09-13.md)
 
 ## Notable Recurring Signals
 
@@ -24,3 +25,5 @@ Observability for AI and agent systems, including traces, tool-call metrics, lat
   are governance and evidence-lifecycle concerns, not merely logging settings.
 - Local-to-cloud escalation, physical actions, safety decisions, and runtime cost
   controls need correlated evidence before they can be governed or replayed.
+- Router choices, agent trajectories, GPU safety contracts, search artifacts,
+  capability decisions, and incident resolution evidence need shared correlation.

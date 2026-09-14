@@ -1,0 +1,83 @@
+{
+  "schema_version": "2.0",
+  "radar_type": "systems",
+  "date": "2026-09-13",
+  "observation_window": {
+    "start": "2026-09-07",
+    "end": "2026-09-13"
+  },
+  "title": "AI Systems Engineering 技术雷达（高信号版）",
+  "status": "reviewed",
+  "reviewed_by": "Ray",
+  "source": {
+    "generator": "ChatGPT",
+    "reviewed_before_ingestion": true
+  },
+  "themes": [
+    "agent-runtime",
+    "ai-security",
+    "evaluation",
+    "llm-infrastructure",
+    "multi-agent-coordination",
+    "observability"
+  ],
+  "signals": [
+    {
+      "title": "KV cache locality becomes an inference-routing input",
+      "summary": "AWS SageMaker prefix-aware routing maps reusable prompt prefixes toward workers with local KV cache while retaining overload protection. The durable system problem is not cache hit rate alone: routers must dynamically trade local reuse against queueing delay, remote KV transfer, recomputation, tenant namespace, and routing overhead, and expose each routing decision as evidence.",
+      "themes": ["llm-infrastructure", "observability"],
+      "evidence": ["https://aws.amazon.com/blogs/machine-learning/reduce-llm-latency-with-prefix-aware-routing-on-amazon-sagemaker-inference/", "https://github.com/ashwinvijayakumar24/llm_serving_layer", "https://github.com/vllm-project/vllm/blob/main/vllm/v1/core/kv_cache_utils.py"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "Agent evaluation becomes a pull-request quality gate",
+      "summary": "AWS's AgentCore and GitHub Actions reference pipeline evaluates agent releases through response quality, tool selection and parameters, trajectory checks, deterministic assertions, and promotion thresholds. A deployable agent version includes code, model, prompt, tool schema, and permissions, so any change to these surfaces should run regression tests in an ephemeral environment under the relevant identity.",
+      "themes": ["agent-runtime", "evaluation", "observability"],
+      "evidence": ["https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions/"],
+      "evidence_level": "Reproducible Engineering Practice"
+    },
+    {
+      "title": "Rust reaches CUDA kernels through typed GPU abstractions",
+      "summary": "NVIDIA introduced early CUDA Rust paths: cuda-oxide offers SIMT kernel control through a custom compiler backend, while cutile-rs offers stable-Rust tile abstractions. The architecture signal is a safety boundary that can span orchestration and GPU abstractions, reducing statically expressible aliasing and ownership errors while retaining CUDA C++ and Python interoperability; races, unsafe code, numerical issues, and driver faults remain.",
+      "themes": ["llm-infrastructure", "observability"],
+      "evidence": ["https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "Massive multi-agent work resembles distributed search infrastructure",
+      "summary": "OpenAI's Navier-Stokes research run describes thousands of agents exploring problem variants, reallocating resources to promising directions, switching model checkpoints, storing intermediate insights, and using reduction and formal verification. At this scale, orchestration needs task DAGs, search budgets, leases, checkpoints, artifact stores, reducers, verifiers, lineage, and diversity control rather than only manager-worker prompts.",
+      "themes": ["agent-runtime", "evaluation", "multi-agent-coordination", "observability"],
+      "evidence": ["https://openai.com/index/navier-stokes-solution/"],
+      "evidence_level": "Official"
+    },
+    {
+      "title": "Operational agents need capability separation around durable incidents",
+      "summary": "Microsoft's network-operations agents separate diagnostics, external-work handoff, and outage communication around a shared incident lifecycle. Capability should be bound jointly to user, managed device, operation, incident state, and approval: read, suggest, create external work, execute, validate, and communicate are distinct privileges with resolution evidence rather than a single all-powerful agent permission.",
+      "themes": ["agent-runtime", "ai-security", "observability"],
+      "evidence": ["https://www.microsoft.com/insidetrack/blog/from-alerts-to-action-how-ai-agents-are-reshaping-network-operations-at-microsoft/"],
+      "evidence_level": "Official"
+    }
+  ],
+  "patterns": [
+    {
+      "title": "Previously internal AI runtime details become explicit control-plane state",
+      "summary": "KV-cache placement, tool trajectories, GPU ownership contracts, search artifacts, permissions, and incident lifecycle all move from hidden implementation details to versioned, observable, and governable system state.",
+      "outlook": "High probability: AI systems will increasingly require evidence planes that connect inference scheduling, agent execution, evaluation, capability enforcement, and verified outcomes.",
+      "themes": ["agent-runtime", "ai-security", "evaluation", "llm-infrastructure", "multi-agent-coordination", "observability"],
+      "examples": ["SageMaker prefix-aware routing", "AgentCore evaluation", "CUDA Rust", "OpenAI Navier-Stokes research run", "Microsoft network operations agents"]
+    }
+  ],
+  "ideas": [
+    {
+      "title": "KV locality versus load router simulator",
+      "summary": "Build a no-GPU simulator comparing round-robin, least-loaded, prefix-affinity, and hybrid routing across unique, stable-shared, hot-prefix, and multi-prefix traffic; measure cache hits, recomputed tokens, queue variance, TTFT, and throughput under tenant isolation.",
+      "themes": ["evaluation", "llm-infrastructure", "observability"]
+    },
+    {
+      "title": "Agent CI behavior and permission regression suite",
+      "summary": "Define an ephemeral agent evaluation environment that checks response correctness, tool selection and parameters, allowed trajectories, deterministic side-effect assertions, and role-specific permission boundaries before promotion.",
+      "themes": ["agent-runtime", "ai-security", "evaluation", "observability"]
+    }
+  ],
+  "markdown_path": "radars/systems/2026/2026-09-13.md"
+}

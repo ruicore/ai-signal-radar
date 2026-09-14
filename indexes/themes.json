@@ -65,6 +65,12 @@
       "date": "2026-08-30",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-30.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-09-13",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-09-13.md"
     }
   ],
   "ai-finops": [
@@ -167,6 +173,12 @@
       "date": "2026-08-09",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-09.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-09-13",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-09-13.md"
     }
   ],
   "backend-architecture": [
@@ -339,6 +351,12 @@
       "date": "2026-08-23",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-23.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-09-13",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-09-13.md"
     }
   ],
   "generated-commons": [
@@ -433,6 +451,12 @@
       "date": "2026-08-30",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-30.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-09-13",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-09-13.md"
     }
   ],
   "multi-agent-coordination": [
@@ -441,6 +465,12 @@
       "date": "2026-08-16",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-16.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-09-13",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-09-13.md"
     }
   ],
   "multi-tenancy": [
@@ -517,6 +547,12 @@
       "date": "2026-08-30",
       "title": "AI Systems Engineering 技术雷达（高信号版）",
       "markdown_path": "radars/systems/2026/2026-08-30.md"
+    },
+    {
+      "radar_type": "systems",
+      "date": "2026-09-13",
+      "title": "AI Systems Engineering 技术雷达（高信号版）",
+      "markdown_path": "radars/systems/2026/2026-09-13.md"
     }
   ],
   "personal-software": [

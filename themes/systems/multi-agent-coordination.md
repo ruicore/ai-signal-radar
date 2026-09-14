@@ -8,8 +8,11 @@ without relying on role prompts alone to resolve authority or conflict.
 ## Related Reports
 
 - 2026-08-16: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-16.md)
+- 2026-09-13: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-09-13.md)
 
 ## Notable Recurring Signals
 
 - Shared-resource coordination requires explicit ownership, leases, quotas,
   backpressure, arbitration, and a route for human recourse.
+- Large-scale agent work resembles distributed search: it needs budgets, task
+  placement, diversity, checkpointing, artifact reduction, lineage, and verifiers.

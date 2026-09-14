@@ -12,6 +12,7 @@ Runtime substrate for agents, including persistent workspaces, scheduling, execu
 - 2026-08-09: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-09.md)
 - 2026-08-23: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-23.md)
 - 2026-08-30: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-08-30.md)
+- 2026-09-13: [AI Systems Engineering 技术雷达（高信号版）](../../radars/systems/2026/2026-09-13.md)
 
 ## Notable Recurring Signals
 
@@ -25,3 +26,5 @@ Runtime substrate for agents, including persistent workspaces, scheduling, execu
   tool, policy, state, approval, recovery, and orchestration semantics.
 - Local-first execution and physical tools require explicit cloud escalation,
   consent, safety, cancellation, recovery, and cross-boundary provenance.
+- Durable incident state and large-scale search artifacts let specialized agents
+  coordinate while preserving distinct lifecycle and capability boundaries.
